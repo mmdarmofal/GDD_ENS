@@ -4,7 +4,19 @@ Tumor type classifier using cancer genomic panel sequencing data
 - `pip install requirements`
 ## Data
 - msk_solid_heme.zip
-  - test tab
+  - tumor_type_final.txt
+  - IMPACT505_Gene_list_detailed.xlsx
+  - cytoband_table.txt
+  - final_hotspot_list.csv
+  - fusions.txt
+  - data_clinical_sample.txt
+  - data_clinical_patient.txt
+  - data_mutations_extended.txt
+  - msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt
+  - data_CNA.txt
+  - mskimpact_data_cna_hg19.seg
+  - data_fusions.txt
+
 ## Generate feature table: 
 - `$ python generate_feature_table.py <path/to/fasta> <path/to/data> <label>`
 
