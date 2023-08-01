@@ -6,12 +6,12 @@ Tumor type classifier using cancer genomic panel sequencing data
 - `$ python generate_feature_table.py <path/to/fasta> <path/to/data> <label>`
 
 ## Train and Test GDD-ENS Model: 
-- split data into training and testing
---`python split_data.py <label>`
-- train 10 individual models for classification
--- `python train_gdd_nn.py <fold> <label>`
+1. split data into training and testing
+`python split_data.py <label>`
+2. train 10 individual models for classification
+\n `python train_gdd_nn.py <fold> <label>`
 - combine 10 models into single ensemble model (GDD-ENS)
-`$ python gdd_ensemble.py <label>`
+3. `python gdd_ensemble.py <label>`
 
 ## Single GDD-ENS runs: 
 `$ python run_gdd_single.py <path/to/single_ft> <label>`
