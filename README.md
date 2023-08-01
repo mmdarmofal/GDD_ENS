@@ -14,7 +14,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 -`python gdd_ensemble.py <label>`
 
 ## Single GDD-ENS runs: 
-`$ python run_gdd_single.py <path/to/single_ft> <label>`
+` python run_gdd_single.py <path/to/single_ft> <label>`
 
 ## Adaptable prior
 `$ python run_adaptable_prior.py <path/to/single_probs> <path/to/adaptable_prior> <label>`
