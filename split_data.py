@@ -26,7 +26,7 @@ def process_data_bal(test_size, n_splits, upsample, label, remove = False):
 	#Removing those not annotated as a training sample (i.e. other, low purity)
 	data = data[data.Classification_Category == 'train']
 	labels = data.Cancer_Type
-	ctypes = set(labels)
+	ctypes = pd.read_csv('/data/bergerm1/ch_GDDP2/pub/data/tumor_type_ordered.csv').Cancer_Type
 	#split data into train and test before balancing
 	data_train_labelled, data_test_labelled, labels_train_labelled, labels_test_labelled = train_test_split(data, labels, test_size=test_size/100, random_state = 0)
 	

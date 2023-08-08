@@ -20,5 +20,5 @@
 source ~/.bashrc
 module load cuda/10.1
 conda activate vir-env
-python generate_feature_table.py /path/to/fasta msk_solid_heme/
+python generate_feature_table.py /data/morrisq/darmofam/gr37.fasta msk_solid_heme/
 

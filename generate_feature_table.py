@@ -125,7 +125,7 @@ def broad_cna(seg, log_ratio_threshold):
 	seg = seg.assign(interval = [pd.Interval(start, end) for start, end in zip(seg.start, seg.end)])
 	 
 	#load reference ct table
-	cytoband_table = pd.read_table(repository_folder +'cytoband_table.txt')
+	cytoband_table = pd.read_table('data/cytoband_table.txt')
 	cytoband_table = cytoband_table[cytoband_table.chr!='Y']
 	cytoband_table = cytoband_table.assign(length = (cytoband_table.end - cytoband_table.start) + 1)
 	
@@ -174,7 +174,7 @@ def broad_cna(seg, log_ratio_threshold):
 
 def fusions(SV):
 	#grab fusions, intragenic fusions
-	fusion_list = pd.read_csv(repository_folder +"fusions.txt", sep = '\t')
+	fusion_list = pd.read_csv('data/fusions.txt', sep = '\t')
 	fusion_genes = set(fusion_list[~(fusion_list.Gene_Fusion.isna())].Gene_Fusion)
 	fusion_intragenic = set(fusion_list[~(fusion_list.Intragenic_Fusion.isna())].Intragenic_Fusion) 
 	SV_data = SV[(SV.Hugo_Symbol.isin(fusion_genes)) | (SV.Fusion.isin(fusion_intragenic))] #each fusion is listed twice per sample with each fusion partner
@@ -192,7 +192,7 @@ def fusions(SV):
 
 def hotspots(maf):
 	#load hotspot list
-	hotspot_list = pd.read_csv(repository_folder + 'final_hotspot_list.csv', index_col = 0)
+	hotspot_list = pd.read_csv('data/final_hotspot_list.csv', index_col = 0)
 	maf = maf.assign(Hotspot_Label = [str(hs) + str(hgsvp) for hs, hgsvp in zip(maf.Hugo_Symbol, maf.HGVSp_Short)])
 	maf['Consequence'] = maf.Consequence.fillna('')
 	nonsyn_consequences = ["missense_variant", "stop_gained", "frameshift_variant", "splice_donor_variant", 
@@ -314,7 +314,7 @@ data_clinical_sample = pd.merge(data_clinical_sample, data_clinical_patient)
 data_clinical_sample = data_clinical_sample[data_clinical_sample.SAMPLE_ID.str.contains('IM')] #only looking at MSK-IMPACT patients
 
 #load cancertypes
-input_cancertypes = pd.read_table(repository_folder +"tumor_type_final.txt") #need to fix
+input_cancertypes = pd.read_table('data/tumor_type_final.txt') #need to fix
 feature_table = pd.merge(data_clinical_sample, input_cancertypes, how = 'left', on = ['CANCER_TYPE', 'CANCER_TYPE_DETAILED'])
 feature_table.Cancer_Type = feature_table.Cancer_Type.fillna('other')
 feature_table = feature_table.assign(Classification_Category = ['train' if ct != 'other' else 'other' for ct in feature_table.Cancer_Type])
@@ -340,9 +340,9 @@ maf = maf.sort_values(by = 'SAMPLE_ID')
 maf_all_somatic = maf[maf.Mutation_Status=='SOMATIC'] #calculate purity estimates, TMB from all detected somatic mutations, not just impact-341 
 
 #correct Hugo Symbols for current notation, only include msk_impact 341 genes
-impact_genes = pd.read_excel(repository_folder +'IMPACT505_Gene_list_detailed.xlsx', sheet_name = '505 genes')
+impact_genes = pd.read_excel('data/IMPACT505_Gene_list_detailed.xlsx', sheet_name = '505 genes')
 impact_genes.columns = ['Hugo_Symbol', 'Name', 'N_exons', 'Panel']
-alt_names_list = pd.read_excel(repository_folder +'IMPACT505_Gene_list_detailed.xlsx', sheet_name = 'alt_names')
+alt_names_list = pd.read_excel('data/IMPACT505_Gene_list_detailed.xlsx', sheet_name = 'alt_names')
 alt_names = {}
 for hs_old, hs_current in zip(alt_names_list.HS_OLD.values, alt_names_list.HS_CURRENT.values):
 	alt_names[hs_old] = hs_current

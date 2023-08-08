@@ -9,7 +9,6 @@
 #BSUB -eo fold.%I.stderr
 #
 # Specify node group
-#BSUB -m "ly-gpu"
 #BSUB -q gpuqueue
 #
 # nodes: number of nodes and GPU request
