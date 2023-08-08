@@ -3,12 +3,13 @@ Tumor type classifier using cancer genomic panel sequencing data
 ## Requirements
 - `pip install requirements`
 ## Data
-- msk_solid_heme.zip
+- data
   - tumor_type_final.txt
   - IMPACT505_Gene_list_detailed.xlsx
   - cytoband_table.txt
   - final_hotspot_list.csv
   - fusions.txt
+- msk_solid_heme.zip
   - data_clinical_sample.txt
   - data_clinical_patient.txt
   - data_mutations_extended.txt
