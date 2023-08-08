@@ -5,6 +5,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 ## Data
 - data
   - tumor_type_final.txt
+  - tumor_type_ordered.csv
   - IMPACT505_Gene_list_detailed.xlsx
   - cytoband_table.txt
   - final_hotspot_list.csv
