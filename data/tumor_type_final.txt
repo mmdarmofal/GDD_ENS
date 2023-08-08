@@ -1,0 +1,335 @@
+CANCER_TYPE	CANCER_TYPE_DETAILED	Cancer_Type
+Non-Small Cell Lung Cancer	Lung Adenocarcinoma	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Lung Squamous Cell Carcinoma	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Non-Small Cell Lung Cancer	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Large Cell Neuroendocrine Carcinoma	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Lung Carcinoid	Lung.Neuroendocrine.Tumor
+Non-Small Cell Lung Cancer	Poorly Differentiated Non-Small Cell Lung Cancer	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Lung Adenosquamous Carcinoma	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Pleomorphic Carcinoma of the Lung	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Atypical Lung Carcinoid	Lung.Neuroendocrine.Tumor
+Non-Small Cell Lung Cancer	Lung Neuroendocrine Tumor	Lung.Neuroendocrine.Tumor
+Non-Small Cell Lung Cancer	Sarcomatoid Carcinoma of the Lung	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Large Cell Lung Carcinoma	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Ciliated Muconodular Papillary Tumor of the Lung	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Spindle Cell Carcinoma of the Lung	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Lymphoepithelioma-like Carcinoma of the Lung	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Basaloid Large Cell Carcinoma of the Lung	Non.Small.Cell.Lung.Cancer
+Non-Small Cell Lung Cancer	Lung Adenocarcinoma In Situ	Non.Small.Cell.Lung.Cancer
+Breast Cancer	Breast Invasive Ductal Carcinoma	Breast.Cancer
+Breast Cancer	Invasive Breast Carcinoma	Breast.Cancer
+Breast Cancer	Breast Invasive Lobular Carcinoma	Breast.Cancer
+Breast Cancer	"Breast Invasive Carcinoma, NOS"	Breast.Cancer
+Breast Cancer	"Breast Invasive Cancer, NOS"	Breast.Cancer
+Breast Cancer	Breast Mixed Ductal and Lobular Carcinoma	Breast.Cancer
+Breast Cancer	Metaplastic Breast Cancer	Breast.Cancer
+Breast Cancer	Breast Invasive Mixed Mucinous Carcinoma	Breast.Cancer
+Breast Cancer	Adenoid Cystic Breast Cancer	Breast.Cancer
+Breast Cancer	Mixed Type Metaplastic Breast Cancer	Breast.Cancer
+Breast Cancer	"Breast Invasive Carcinosarcoma, NOS"	Breast.Cancer
+Breast Cancer	Solid Papillary Carcinoma of the Breast	Breast.Cancer
+Breast Cancer	Metaplastic Squamous Cell Carcinoma	Breast.Cancer
+Breast Cancer	Breast Ductal Carcinoma In Situ	Breast.Cancer
+Breast Cancer	Metaplastic Adenosquamous Carcinoma	Breast.Cancer
+Breast Cancer	Breast Carcinoma with Signet Ring	Breast.Cancer
+Colorectal Cancer	Colon Adenocarcinoma	Colorectal.Cancer
+Colorectal Cancer	Rectal Adenocarcinoma	Colorectal.Cancer
+Colorectal Cancer	Colorectal Adenocarcinoma	Colorectal.Cancer
+Colorectal Cancer	Mucinous Adenocarcinoma of the Colon and Rectum	Colorectal.Cancer
+Colorectal Cancer	Signet Ring Cell Adenocarcinoma of the Colon and Rectum	Colorectal.Cancer
+Colorectal Cancer	Medullary Carcinoma of the Colon	Colorectal.Cancer
+Colorectal Cancer	Colon Adenocarcinoma In Situ	Colorectal.Cancer
+Prostate Cancer	Prostate Adenocarcinoma	Prostate.Cancer
+Prostate Cancer	Prostate Neuroendocrine Carcinoma	Prostate.Cancer
+Prostate Cancer	Prostate Small Cell Carcinoma	Prostate.Cancer
+Prostate Cancer	Prostate Squamous Cell Carcinoma	Prostate.Cancer
+Pancreatic Cancer	Pancreatic Adenocarcinoma	Pancreatic.Cancer
+Pancreatic Cancer	Pancreatic Neuroendocrine Tumor	Pancreatic.Neuroendocrine.Tumor
+Pancreatic Cancer	Adenosquamous Carcinoma of the Pancreas	Pancreatic.Cancer
+Pancreatic Cancer	Acinar Cell Carcinoma of the Pancreas	Pancreatic.Cancer
+Pancreatic Cancer	Undifferentiated Carcinoma of the Pancreas	Pancreatic.Cancer
+Pancreatic Cancer	Intraductal Papillary Mucinous Neoplasm	Pancreatic.Cancer
+Pancreatic Cancer	Solid Pseudopapillary Neoplasm of the Pancreas	Pancreatic.Cancer
+Pancreatic Cancer	Mucinous Cystic Neoplasm	Pancreatic.Cancer
+Pancreatic Cancer	Pancreatoblastoma	Pancreatic.Cancer
+Pancreatic Cancer	Serous Cystadenoma of the Pancreas	Pancreatic.Cancer
+Pancreatic Cancer	Osteoclastic Giant Cell Tumor	Pancreatic.Cancer
+Glioma	Glioblastoma Multiforme	Glioma
+Glioma	Anaplastic Astrocytoma	Glioma
+Glioma	Glioblastoma	Glioma
+Glioma	Astrocytoma	Glioma
+Glioma	Oligodendroglioma	Glioma
+Glioma	Anaplastic Oligodendroglioma	Glioma
+Glioma	"High-Grade Glioma, NOS"	Glioma
+Glioma	Diffuse Astrocytoma	Glioma
+Glioma	"Glioma, NOS"	Glioma
+Glioma	Diffuse Glioma	Glioma
+Glioma	Pilocytic Astrocytoma	Glioma
+Glioma	Gliosarcoma	Glioma
+Glioma	Ependymoma	Ependymoma
+Glioma	"Low-Grade Glioma, NOS"	Glioma
+Glioma	Anaplastic Oligoastrocytoma	Glioma
+Glioma	Ganglioglioma	Glioma
+Glioma	Diffuse Intrinsic Pontine Glioma	Glioma
+Glioma	Oligoastrocytoma	Glioma
+Glioma	Pilomyxoid Astrocytoma	Glioma
+Glioma	Pleomorphic Xanthoastrocytoma	Glioma
+Glioma	Anaplastic Pleomorphic Xanthoastrocytoma	Glioma
+Glioma	Small Cell Glioblastoma	Glioma
+Glioma	Anaplastic Ganglioglioma	Glioma
+Endometrial Cancer	Uterine Endometrioid Carcinoma	Endometrial.Cancer
+Endometrial Cancer	Uterine Serous Carcinoma/Uterine Papillary Serous Carcinoma	Endometrial.Cancer
+Endometrial Cancer	Uterine Carcinosarcoma/Uterine Malignant Mixed Mullerian Tumor	Endometrial.Cancer
+Endometrial Cancer	Endometrial Carcinoma	Endometrial.Cancer
+Endometrial Cancer	Uterine Mixed Endometrial Carcinoma	Endometrial.Cancer
+Endometrial Cancer	Uterine Clear Cell Carcinoma	Endometrial.Cancer
+Endometrial Cancer	Uterine Dedifferentiated Carcinoma	Endometrial.Cancer
+Endometrial Cancer	Uterine Undifferentiated Carcinoma	Endometrial.Cancer
+Endometrial Cancer	Uterine Neuroendocrine Carcinoma	Endometrial.Cancer
+Endometrial Cancer	Poorly Differentiated Carcinoma of the Uterus	Endometrial.Cancer
+Endometrial Cancer	Uterine Adenosquamous Carcinoma	Endometrial.Cancer
+Endometrial Cancer	Uterine Mucinous Carcinoma	Endometrial.Cancer
+Soft Tissue Sarcoma	"Sarcoma, NOS"	Sarcoma.NOS
+Soft Tissue Sarcoma	Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Dedifferentiated Liposarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Leiomyosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Synovial Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Angiosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Desmoplastic Small-Round-Cell Tumor	Sarcoma.NOS
+Soft Tissue Sarcoma	Well-Differentiated Liposarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Myxoid/Round-Cell Liposarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Solitary Fibrous Tumor/Hemangiopericytoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Myxofibrosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Embryonal Rhabdomyosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Rhabdomyosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Epithelioid Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Epithelioid Hemangioendothelioma	Sarcoma.NOS
+Soft Tissue Sarcoma	Alveolar Rhabdomyosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Pleomorphic Liposarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Desmoid/Aggressive Fibromatosis	Sarcoma.NOS
+Soft Tissue Sarcoma	Perivascular Epithelioid Cell Tumor	Sarcoma.NOS
+Soft Tissue Sarcoma	"Round Cell Sarcoma, NOS"	Sarcoma.NOS
+Soft Tissue Sarcoma	Clear Cell Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Intimal Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Alveolar Soft Part Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Liposarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Low-Grade Fibromyxoid Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Inflammatory Myofibroblastic Tumor	Sarcoma.NOS
+Soft Tissue Sarcoma	Follicular Dendritic Cell Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Sclerosing Epithelioid Fibrosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Fibrosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Spindle Cell Rhabdomyosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Pleomorphic Rhabdomyosarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Ewing Sarcoma of Soft Tissue	Sarcoma.NOS
+Soft Tissue Sarcoma	Radiation-Associated Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Proximal-Type Epithelioid Sarcoma	Sarcoma.NOS
+Soft Tissue Sarcoma	Spindle Cell/Sclerosing Rhabdomyosarcoma	Sarcoma.NOS
+Bladder Cancer	Bladder Urothelial Carcinoma	Bladder.Cancer
+Bladder Cancer	Upper Tract Urothelial Carcinoma	Bladder.Cancer
+Bladder Cancer	Urethral Urothelial Carcinoma	Bladder.Cancer
+Bladder Cancer	Bladder Adenocarcinoma	Bladder.Cancer
+Bladder Cancer	Small Cell Bladder Cancer	Bladder.Cancer
+Bladder Cancer	Plasmacytoid/Signet Ring Cell Bladder Carcinoma	Bladder.Cancer
+Bladder Cancer	Bladder Squamous Cell Carcinoma	Bladder.Cancer
+Bladder Cancer	Sarcomatoid Carcinoma of the Urinary Bladder	Bladder.Cancer
+Ovarian Cancer	High-Grade Serous Ovarian Cancer	Ovarian.Cancer
+Ovarian Cancer	Clear Cell Ovarian Cancer	Ovarian.Cancer
+Ovarian Cancer	Low-Grade Serous Ovarian Cancer	Ovarian.Cancer
+Ovarian Cancer	Serous Ovarian Cancer	Ovarian.Cancer
+Ovarian Cancer	Ovarian Carcinosarcoma/Malignant Mixed Mesodermal Tumor	Ovarian.Cancer
+Ovarian Cancer	Endometrioid Ovarian Cancer	Ovarian.Cancer
+Ovarian Cancer	High-Grade Serous Fallopian Tube Cancer	Ovarian.Cancer
+Ovarian Cancer	Mucinous Ovarian Cancer	Ovarian.Cancer
+Ovarian Cancer	Mixed Ovarian Carcinoma	Ovarian.Cancer
+Ovarian Cancer	"Ovarian Cancer, Other"	Ovarian.Cancer
+Ovarian Cancer	Small Cell Carcinoma of the Ovary	Ovarian.Cancer
+Ovarian Cancer	Serous Borderline Ovarian Tumor	Ovarian.Cancer
+Ovarian Cancer	"Serous Borderline Ovarian Tumor, Micropapillary"	Ovarian.Cancer
+Ovarian Cancer	Ovarian Epithelial Tumor	Ovarian.Cancer
+Ovarian Cancer	Mucinous Borderline Ovarian Tumor	Ovarian.Cancer
+Ovarian Cancer	Ovarian Seromucinous Carcinoma	Ovarian.Cancer
+Ovarian Cancer	Ovarian Seromucinous Adenoma	Ovarian.Cancer
+Ovarian Cancer	High-Grade Neuroendocrine Carcinoma of the Ovary	Ovarian.Cancer
+Ovarian Cancer	Clear Cell Borderline Ovarian Tumor	Ovarian.Cancer
+Melanoma	Cutaneous Melanoma	Melanoma
+Melanoma	Melanoma of Unknown Primary	Melanoma
+Melanoma	Uveal Melanoma	Uveal.Melanoma
+Melanoma	Acral Melanoma	Melanoma
+Melanoma	Melanoma	Melanoma
+Melanoma	Anorectal Mucosal Melanoma	Melanoma
+Melanoma	Head and Neck Mucosal Melanoma	Melanoma
+Melanoma	Mucosal Melanoma of the Vulva/Vagina	Melanoma
+Melanoma	Ocular Melanoma	Uveal.Melanoma
+Melanoma	Mucosal Melanoma of the Urethra	Melanoma
+Melanoma	Mucosal Melanoma of the Esophagus	Melanoma
+Melanoma	Conjunctival Melanoma	Uveal.Melanoma
+Melanoma	Desmoplastic Melanoma	Melanoma
+Melanoma	Primary CNS Melanoma	Melanoma
+Melanoma	Lentigo Maligna Melanoma	Melanoma
+Esophagogastric Cancer	Stomach Adenocarcinoma	Esophagogastric.Cancer
+Esophagogastric Cancer	Esophageal Adenocarcinoma	Esophagogastric.Cancer
+Esophagogastric Cancer	Adenocarcinoma of the Gastroesophageal Junction	Esophagogastric.Cancer
+Esophagogastric Cancer	Esophagogastric Adenocarcinoma	Esophagogastric.Cancer
+Esophagogastric Cancer	Esophageal Squamous Cell Carcinoma	Esophagogastric.Cancer
+Esophagogastric Cancer	Poorly Differentiated Carcinoma of the Stomach	Esophagogastric.Cancer
+Esophagogastric Cancer	Signet Ring Cell Carcinoma of the Stomach	Esophagogastric.Cancer
+Esophagogastric Cancer	Esophageal Poorly Differentiated Carcinoma	Esophagogastric.Cancer
+Esophagogastric Cancer	Intestinal Type Stomach Adenocarcinoma	Esophagogastric.Cancer
+Esophagogastric Cancer	Tubular Stomach Adenocarcinoma	Esophagogastric.Cancer
+Esophagogastric Cancer	Diffuse Type Stomach Adenocarcinoma	Esophagogastric.Cancer
+Esophagogastric Cancer	Mucinous Stomach Adenocarcinoma	Esophagogastric.Cancer
+Esophagogastric Cancer	Small Cell Carcinoma of the Stomach	Esophagogastric.Cancer
+Hepatobiliary Cancer	Intrahepatic Cholangiocarcinoma	Cholangiocarcinoma
+Hepatobiliary Cancer	Hepatocellular Carcinoma	Hepatocellular.Carcinoma
+Hepatobiliary Cancer	Gallbladder Cancer	Gallbladder.Cancer
+Hepatobiliary Cancer	Extrahepatic Cholangiocarcinoma	Cholangiocarcinoma
+Hepatobiliary Cancer	Cholangiocarcinoma	Cholangiocarcinoma
+Hepatobiliary Cancer	"Gallbladder Adenocarcinoma, NOS"	Gallbladder.Cancer
+Hepatobiliary Cancer	Perihilar Cholangiocarcinoma	Cholangiocarcinoma
+Hepatobiliary Cancer	Adenosquamous Carcinoma of the Gallbladder	Gallbladder.Cancer
+Renal Cell Carcinoma	Renal Clear Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Unclassified Renal Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Renal Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Papillary Renal Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Chromophobe Renal Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Translocation-Associated Renal Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Renal Angiomyolipoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	FH-Deficient Renal Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Renal Oncocytoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Renal Medullary Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Sarcomatoid Renal Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Clear Cell Papillary Renal Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Renal Mucinous Tubular Spindle Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Renal Clear Cell Carcinoma with Sarcomatoid Features	Renal.Cell.Cancer
+Renal Cell Carcinoma	Collecting Duct Renal Cell Carcinoma	Renal.Cell.Cancer
+Renal Cell Carcinoma	Renal Non-Clear Cell Carcinoma	Renal.Cell.Cancer
+Thyroid Cancer	Papillary Thyroid Cancer	Thyroid.Cancer
+Thyroid Cancer	Poorly Differentiated Thyroid Cancer	Thyroid.Cancer
+Thyroid Cancer	Anaplastic Thyroid Cancer	Thyroid.Cancer
+Thyroid Cancer	Medullary Thyroid Cancer	Thyroid.Cancer
+Thyroid Cancer	Hurthle Cell Thyroid Cancer	Thyroid.Cancer
+Thyroid Cancer	Follicular Thyroid Cancer	Thyroid.Cancer
+Thyroid Cancer	Well-Differentiated Thyroid Cancer	Thyroid.Cancer
+Germ Cell Tumor	Mixed Germ Cell Tumor	Germ.Cell.Tumor
+Germ Cell Tumor	Seminoma	Germ.Cell.Tumor
+Germ Cell Tumor	Yolk Sac Tumor	Germ.Cell.Tumor
+Germ Cell Tumor	Non-Seminomatous Germ Cell Tumor	Germ.Cell.Tumor
+Germ Cell Tumor	Embryonal Carcinoma	Germ.Cell.Tumor
+Germ Cell Tumor	Mature Teratoma	Germ.Cell.Tumor
+Germ Cell Tumor	Germ Cell Tumor with Somatic-Type Malignancy	Germ.Cell.Tumor
+Germ Cell Tumor	Immature Teratoma	Germ.Cell.Tumor
+Germ Cell Tumor	Teratoma	Germ.Cell.Tumor
+Germ Cell Tumor	Extra Gonadal Germ Cell Tumor	Germ.Cell.Tumor
+Germ Cell Tumor	Dysgerminoma	Germ.Cell.Tumor
+Germ Cell Tumor	"Germ Cell Tumor, Brain"	Germ.Cell.Tumor
+Germ Cell Tumor	Ovarian Germ Cell Tumor	Germ.Cell.Tumor
+Germ Cell Tumor	Germinoma	Germ.Cell.Tumor
+Head and Neck Cancer	Head and Neck Squamous Cell Carcinoma	Head.and.Neck.Squamous.Cell.Cancer
+Head and Neck Cancer	Oral Cavity Squamous Cell Carcinoma	Head.and.Neck.Squamous.Cell.Cancer
+Head and Neck Cancer	Oropharynx Squamous Cell Carcinoma	Head.and.Neck.Squamous.Cell.Cancer
+Head and Neck Cancer	Nasopharyngeal Carcinoma	Head.and.Neck.Squamous.Cell.Cancer
+Head and Neck Cancer	Larynx Squamous Cell Carcinoma	Head.and.Neck.Squamous.Cell.Cancer
+Head and Neck Cancer	Sinonasal Squamous Cell Carcinoma	Head.and.Neck.Squamous.Cell.Cancer
+Head and Neck Cancer	Head and Neck Squamous Cell Carcinoma of Unknown Primary	Head.and.Neck.Squamous.Cell.Cancer
+Head and Neck Cancer	Hypopharynx Squamous Cell Carcinoma	Head.and.Neck.Squamous.Cell.Cancer
+Gastrointestinal Stromal Tumor	Gastrointestinal Stromal Tumor	Gastrointestinal.Stromal.Tumor
+Bone Cancer	Osteosarcoma	Sarcoma.NOS
+Bone Cancer	Ewing Sarcoma	Sarcoma.NOS
+Bone Cancer	Chondrosarcoma	Sarcoma.NOS
+Bone Cancer	Chordoma	Sarcoma.NOS
+Bone Cancer	Osteoblastic Osteosarcoma	Sarcoma.NOS
+Bone Cancer	Chondroblastic Osteosarcoma	Sarcoma.NOS
+Bone Cancer	Extraskeletal Myxoid Chondrosarcoma	Sarcoma.NOS
+Bone Cancer	Dedifferentiated Chondrosarcoma	Sarcoma.NOS
+Bone Cancer	Myxoid Chondrosarcoma	Sarcoma.NOS
+Bone Cancer	Mesenchymal Chondrosarcoma	Sarcoma.NOS
+Bone Cancer	Giant Cell Tumor of Bone	Sarcoma.NOS
+Bone Cancer	Parosteal Osteosarcoma	Sarcoma.NOS
+Bone Cancer	High-Grade Surface Osteosarcoma	Sarcoma.NOS
+Bone Cancer	Adamantinoma	Sarcoma.NOS
+Bone Cancer	Small Cell Osteosarcoma	Sarcoma.NOS
+Bone Cancer	Telangiectatic Osteosarcoma	Sarcoma.NOS
+Bone Cancer	Fibroblastic Osteosarcoma	Sarcoma.NOS
+Bone Cancer	Conventional Type Chordoma	Sarcoma.NOS
+Bone Cancer	Chondroblastoma	Sarcoma.NOS
+Bone Cancer	Secondary Osteosarcoma	Sarcoma.NOS
+Bone Cancer	Low-Grade Central Osteosarcoma	Sarcoma.NOS
+Bone Cancer	Periosteal Osteosarcoma	Sarcoma.NOS
+"Skin Cancer, Non-Melanoma"	Merkel Cell Carcinoma	Merkel.Cell.Carcinoma
+"Skin Cancer, Non-Melanoma"	Cutaneous Squamous Cell Carcinoma	Cutaneous.Squamous.Cell.Carcinoma
+Small Cell Lung Cancer	Small Cell Lung Cancer	Small.Cell.Lung.Cancer
+Mesothelioma	"Pleural Mesothelioma, Epithelioid Type"	Mesothelioma
+Mesothelioma	Pleural Mesothelioma	Mesothelioma
+Mesothelioma	Peritoneal Mesothelioma	Mesothelioma
+Mesothelioma	"Pleural Mesothelioma, Biphasic Type"	Mesothelioma
+Mesothelioma	"Pleural Mesothelioma, Sarcomatoid Type"	Mesothelioma
+Mesothelioma	Testicular Mesothelioma	Mesothelioma
+Salivary Gland Cancer	Adenoid Cystic Carcinoma	Salivary.Gland.Cancer
+Salivary Gland Cancer	Salivary Duct Carcinoma	Salivary.Gland.Cancer
+Salivary Gland Cancer	Mammary Analogue Secretory Carcinoma of Salivary Gland Origin	Salivary.Gland.Cancer
+Salivary Gland Cancer	"Salivary Carcinoma, Other"	Salivary.Gland.Cancer
+Salivary Gland Cancer	Myoepithelial Carcinoma	Salivary.Gland.Cancer
+Salivary Gland Cancer	Salivary Carcinoma	Salivary.Gland.Cancer
+Salivary Gland Cancer	Acinic Cell Carcinoma	Salivary.Gland.Cancer
+Salivary Gland Cancer	Salivary Adenocarcinoma	Salivary.Gland.Cancer
+Salivary Gland Cancer	Mucoepidermoid Carcinoma	Salivary.Gland.Cancer
+Salivary Gland Cancer	Basal Cell Adenocarcinoma	Salivary.Gland.Cancer
+Peripheral Nervous System	Neuroblastoma	Neuroblastoma
+Peripheral Nervous System	Ganglioneuroblastoma	Neuroblastoma
+Uterine Sarcoma	Uterine Leiomyosarcoma	Sarcoma.NOS
+Uterine Sarcoma	"Uterine Sarcoma, Other"	Sarcoma.NOS
+Uterine Sarcoma	Uterine Adenosarcoma	Sarcoma.NOS
+Uterine Sarcoma	Endometrial Stromal Sarcoma	Sarcoma.NOS
+Uterine Sarcoma	Uterine Perivascular Epithelioid Cell Tumor	Sarcoma.NOS
+Uterine Sarcoma	Low-Grade Endometrial Stromal Sarcoma	Sarcoma.NOS
+Uterine Sarcoma	High-Grade Endometrial Stromal Sarcoma	Sarcoma.NOS
+Uterine Sarcoma	Undifferentiated Uterine Sarcoma	Sarcoma.NOS
+Uterine Sarcoma	Uterine Epithelioid Leiomyosarcoma	Sarcoma.NOS
+Uterine Sarcoma	Uterine Myxoid Leiomyosarcoma	Sarcoma.NOS
+Uterine Sarcoma	Uterine Sarcoma/Mesenchymal	Sarcoma.NOS
+Uterine Sarcoma	Uterine Smooth Muscle Tumor of Uncertain Malignant Potential	Sarcoma.NOS
+Uterine Sarcoma	Uterine Leiomyoma	Sarcoma.NOS
+Uterine Sarcoma	Uterine Smooth Muscle Tumor	Sarcoma.NOS
+Cervical Cancer	Cervical Squamous Cell Carcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Endocervical Adenocarcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Cervical Adenosquamous Carcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Gastric Type Mucinous Carcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Cervical Adenocarcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Cervical Clear Cell Carcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Small Cell Carcinoma of the Cervix	HPV_Ano-Genital.Cancer
+Cervical Cancer	Cervical Neuroendocrine Tumor	HPV_Ano-Genital.Cancer
+Cervical Cancer	Mixed Cervical Carcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Mesonephric Carcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Mucinous Carcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Glassy Cell Carcinoma of the Cervix	HPV_Ano-Genital.Cancer
+Cervical Cancer	Cervical Endometrioid Carcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Cervical Serous Carcinoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Cervical Leiomyosarcoma	HPV_Ano-Genital.Cancer
+Cervical Cancer	Cervical Adenocarcinoma In Situ	HPV_Ano-Genital.Cancer
+Gastrointestinal Neuroendocrine Tumor	Small Bowel Well-Differentiated Neuroendocrine Tumor	Gastrointestinal.Neuroendocrine.Tumor
+Gastrointestinal Neuroendocrine Tumor	High-Grade Neuroendocrine Carcinoma of the Colon and Rectum	Colorectal.Cancer
+Gastrointestinal Neuroendocrine Tumor	Well-Differentiated Neuroendocrine Tumor of the Rectum	Gastrointestinal.Neuroendocrine.Tumor
+Gastrointestinal Neuroendocrine Tumor	Gastrointestinal Neuroendocrine Tumors	Gastrointestinal.Neuroendocrine.Tumor
+Gastrointestinal Neuroendocrine Tumor	Well-Differentiated Neuroendocrine Tumor of the Appendix	Gastrointestinal.Neuroendocrine.Tumor
+Gastrointestinal Neuroendocrine Tumor	Well-Differentiated Neuroendocrine Tumors of the Stomach	Gastrointestinal.Neuroendocrine.Tumor
+CNS Cancer	Meningioma	Meningioma
+CNS Cancer	Atypical Meningioma	Meningioma
+CNS Cancer	Anaplastic Ependymoma	Ependymoma
+CNS Cancer	Anaplastic Meningioma	Meningioma
+CNS Cancer	Myxopapillary Ependymoma	Ependymoma
+CNS Cancer	Subependymoma	Ependymoma
+CNS Cancer	Ependymomal Tumor	Ependymoma
+CNS Cancer	Rhabdoid Meningioma	Meningioma
+CNS Cancer	Papillary Meningioma	Meningioma
+Nerve Sheath Tumor	Malignant Peripheral Nerve Sheath Tumor	Malignant.Peripheral.Nerve.Sheath.Tumor
+Anal Cancer	Anal Squamous Cell Carcinoma	HPV_Ano-Genital.Cancer
+Thymic Tumor	Thymoma	Thymic.Tumor
+Thymic Tumor	Thymic Carcinoma	Thymic.Tumor
+Thymic Tumor	Thymic Neuroendocrine Tumor	Thymic.Tumor
+Adrenocortical Carcinoma	Adrenocortical Carcinoma	Adrenocortical.Carcinoma
+Retinoblastoma	Retinoblastoma	Retinoblastoma
+Sex Cord Stromal Tumor	Granulosa Cell Tumor	Sex.Cord.Stromal.Tumor
+Sex Cord Stromal Tumor	Sex Cord Stromal Tumor	Sex.Cord.Stromal.Tumor
+Sex Cord Stromal Tumor	Sertoli-Leydig Cell Tumor	Sex.Cord.Stromal.Tumor
+Sex Cord Stromal Tumor	Fibrothecoma	Sex.Cord.Stromal.Tumor
+Sex Cord Stromal Tumor	"Steroid Cell Tumor, NOS"	Sex.Cord.Stromal.Tumor
