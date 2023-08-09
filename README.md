@@ -1,7 +1,7 @@
 # GDD_ENS
 Tumor type classifier using cancer genomic panel sequencing data
 ## Requirements
-- `pip install requirements`
+- requirements.txt
 ## Data
 - data
   - tumor_type_final.txt
@@ -10,6 +10,9 @@ Tumor type classifier using cancer genomic panel sequencing data
   - cytoband_table.txt
   - final_hotspot_list.csv
   - fusions.txt
+  - ft_colnames.csv
+  - gddnn_kmeans_output.bz2
+  - feature_annotations.csv
 - msk_solid_heme.zip
   - data_clinical_sample.txt
   - data_clinical_patient.txt
@@ -20,7 +23,7 @@ Tumor type classifier using cancer genomic panel sequencing data
   - data_fusions.txt
 
 ## Generate feature table: 
-- `$ python generate_feature_table.py <path/to/fasta> <path/to/data> <label>`
+- `$ python generate_feature_table.py <path/to/fasta> <path/to/repository> <label>`
 
 ## Train and Test GDD-ENS Model: 
 1. split data into training and testing
@@ -33,5 +36,5 @@ Tumor type classifier using cancer genomic panel sequencing data
 `$ python run_gdd_single.py <path/to/single_ft> <label>`
 
 ## Adaptable prior
-`$ python run_adaptable_prior.py <path/to/single_probs> <path/to/adaptable_prior> <label>`
+`$ python adaptable_prior.py <path/to/single_probs> <path/to/adaptable_prior> <label>`
 
