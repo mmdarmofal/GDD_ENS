@@ -37,6 +37,6 @@ Tumor type classifier using cancer genomic panel sequencing data
 `$ python run_gdd_single.py <path/to/single_ft> <path/to/single_output>`
 
 ## Adaptable prior
-#compatable with one or more priors, specify in adaptable prior table (template provided). Requires original full probability array and outputted formatted as per template
+#### *Requires original full probability array and outputted formatted as per template. Compatable with one or more priors, specify in adaptable prior table (prior_table_single vs prior_table_multi)
 `$ python adaptable_prior.py <path/to/adaptable_prior> <path/to/original_output> <path/to/original_allprobs> <label>`
 
