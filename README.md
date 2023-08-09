@@ -30,11 +30,13 @@ Tumor type classifier using cancer genomic panel sequencing data
 - `$ python split_data.py <label>`
 2. train 10 individual models for classification
 - `$ python train_gdd_nn.py <fold> <label>`
-3. combine 10 models into single ensemble model (GDD-ENS) - `$ python gdd_ensemble.py <label>`
+3. combine 10 models into single ensemble model (GDD-ENS)
+- `$ python gdd_ensemble.py <label>`
 
 ## Single GDD-ENS runs: 
-`$ python run_gdd_single.py <path/to/single_ft> <label>`
+`$ python run_gdd_single.py <path/to/single_ft> <path/to/single_output>`
 
 ## Adaptable prior
-`$ python adaptable_prior.py <path/to/single_probs> <path/to/adaptable_prior> <label>`
+-compatable with one or more priors, specify in adaptable prior table (template provided). Requires original full probability array and outputted formatted as per template
+`$ python adaptable_prior.py <path/to/adaptable_prior> <path/to/original_output> <path/to/original_allprobs> <label>`
 
