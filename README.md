@@ -1,6 +1,7 @@
 # GDD_ENS
 Tumor type classifier using cancer genomic panel sequencing data
-## Requirements
+## Requirements:
+* [hg19/gr37 Reference File](https://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/)
 * Conda
 * python3
 * numpy
@@ -9,7 +10,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 * [Imbalanced-Learn Library](https://imbalanced-learn.org/stable/index.html)
 * [Scopt Library](https://scikit-optimize.github.io/stable/index.html)
 
-## Data
+## Data Used:
 ### [data](./data/)
 * IMPACT505_Gene_list_detailed.xlsx
 * cytoband_table.txt
@@ -33,31 +34,23 @@ Tumor type classifier using cancer genomic panel sequencing data
 
 
 ## Workflow:
-### Generate feature table: 
-   ```
-   $ python generate_feature_table.py <path/to/fasta> <path/to/repository> <label>
-  ```
+1. Generate feature table
+2. Train and Test GDD-ENS Model
+   1. Split data into training and testing
+   2. Train 10 individual models for classification
+   3. Combine 10 models into single ensemble model (GDD-ENS)
+3. Single GDD-ENS runs
+4. Adaptable prior
 
-### Train and Test GDD-ENS Model:
-1. Split data into training and testing
-   ```
-   $ python split_data.py <label>
-   ```
-2. Train 10 individual models for classification
-   ```
-   $ python train_gdd_nn.py <fold> <label>
-   ```
-3. Combine 10 models into single ensemble model (GDD-ENS)
-   ```
-   $ python gdd_ensemble.py <label>
-   ```
+## Quick Links:
+* [Example Workflow](doc/workflow.md)
 
-### Single GDD-ENS runs:
-   ```
-   $ python run_gdd_single.py <path/to/single_ft> <path/to/single_output>
-   ```
-### Adaptable prior:
-* Requires original full probability array and outputted formatted as per template. Compatable with one or more priors, specify in adaptable prior table (prior_table_single vs prior_table_multi)
-   ```
-   python adaptable_prior.py <path/to/adaptable_prior> <path/to/original_output> <path/to/original_allprobs> <label>
-   ```
+## Credits:
+GDD_ENS was originally written by Madison Darmofal <darmofam@mskcc.org>.
+
+We thank the following people for their extensive assistance in the development of this pipeline:
+
+- Quaid Morris <morrisq@mskcc.org>
+- Michael Berger <bergerm1@mskcc.org>
+- Shalabh Suman <sumans@mskcc.org>
+
