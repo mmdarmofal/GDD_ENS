@@ -1,5 +1,6 @@
 # GDD_ENS
 Tumor type classifier using cancer genomic panel sequencing data
+
 ## Requirements:
 * [hg19/gr37 Reference File](https://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/)
 * Conda
@@ -11,27 +12,10 @@ Tumor type classifier using cancer genomic panel sequencing data
 * [Scopt Library](https://scikit-optimize.github.io/stable/index.html)
 
 ## Data Used:
-### [data](./data/)
-* IMPACT505_Gene_list_detailed.xlsx
-* cytoband_table.txt
-* ensemble.pt
-* feature_annotations.csv
-* final_hotspot_list.csv
-* ft_colnames.csv
-* fusions.txt
-* gddnn_kmeans_output.bz2
-* msk_solid_heme.zip
-* tumor_type_final.txt
-* tumor_type_ordered.csv
-* msk_solid_heme.zip
-  - data_CNA.txt
-  - data_clinical_sample.txt
-  - data_clinical_patient.txt
-  - data_fusions.txt
-  - data_mutations_extended.txt
-  - msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt
-  - mskimpact_data_cna_hg19.seg
-
+* [data_training](./doc/data.md#data_training)
+* [msk solid heme](./doc/data.md#msk_solid_heme)
+* [data_model](./doc/data.md#data_model)
+* [data_adaptivePrior](./doc/data.md#data_adaptiveprior)
 
 ## Workflow:
 1. Generate feature table
