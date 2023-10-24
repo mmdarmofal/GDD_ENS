@@ -7,7 +7,7 @@ conda env create gdd_ens -f env/requirements.txt
 
 ### Unzip the Repository Folder:
 ```
-unzip data//data_training/msk_solid_heme.zip
+unzip data/data_training/msk_solid_heme.zip
 ```
 
 ### Download & Index the Reference Fasta
