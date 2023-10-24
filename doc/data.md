@@ -8,8 +8,8 @@
 * gddnn_kmeans_output.bz2
 * tumor_type_final.txt
 * tumor_type_ordered.csv
-* 
-## [msk solid heme](../data/data_training/msk_solid_heme.zip)
+
+## [msk_solid_heme](../data/data_training/msk_solid_heme.zip)
   - data_CNA.txt
   - data_clinical_sample.txt
   - data_clinical_patient.txt
