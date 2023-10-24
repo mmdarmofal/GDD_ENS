@@ -96,7 +96,7 @@ bwa index hg19.fa
    >
 
    ```
-   $ python run_gdd_single.py <path/to/single_ft> <path/to/single_output>
+   $ python run_gdd_single.py <path/to/predict_single_fn> <path/to/final_res_fn>
    ```
 
    > Outputs: 
