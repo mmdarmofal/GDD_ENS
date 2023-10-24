@@ -7,7 +7,7 @@ conda env create gdd_ens -f env/requirements.txt
 
 ### Unzip the Repository Folder:
 ```
-unzip data/msk_solid_heme.zip
+unzip data//data_training/msk_solid_heme.zip
 ```
 
 ### Download & Index the Reference Fasta
@@ -27,7 +27,7 @@ bwa index hg19.fa
 
    > Inputs: 
    > * path_to_fasta: path to fasta, ex: hg19.fa
-   > * repository_folder: folder where data is stored, i.e. data/msk_solid_heme
+   > * repository_folder: folder where data is stored, i.e. data/data_training/msk_solid_heme
    > * label: title of the final output table (if not specified, msk_solid_heme_ft.csv)
    >
 

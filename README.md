@@ -3,6 +3,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 
 ## Requirements:
 * [hg19/gr37 Reference File](https://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/)
+* [bwa](https://bio-bwa.sourceforge.net/)
 * Conda
 * python3
 * numpy
