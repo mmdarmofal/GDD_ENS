@@ -4,21 +4,60 @@ import pandas as pd
 
 import joblib
 
-from pybedtools import BedTool, helpers
-from pyfaidx import Fasta
-
 import torch 
 import torch.nn as nn 
 import torch.nn.functional as F 
 
-sys.path.insert(0, './')
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-from train_gdd_nn import MLP
-from gdd_ensemble import EnsembleClassifier
-
+#sys.path.insert(0, '../')
+#os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+class MLP(torch.nn.Module):
+	#multi-layer perceptron class
+	def __init__(self, num_fc_layers, num_fc_units,  dropout_rate, n_features, n_types):
+		super().__init__()
+		#fc_layers = number of layers that the MLP will have
+		#fc_units = number of units in each of the middle layers
+		self.layers = nn.ModuleList() #empty module list as of rn
+		self.layers.append(nn.Linear(n_features, num_fc_units)) #(in features, out_features)
+		for i in range(num_fc_layers):
+			self.layers.append(nn.Linear(num_fc_units, num_fc_units)) #linear unit
+			self.layers.append(nn.ReLU(True)) #reLu activation
+			self.layers.append(nn.Dropout(p=dropout_rate))
+		self.layers.append(nn.Linear(num_fc_units, n_types)) #in features, out_features (hard coded)
+	#functions which run the model
+	def forward(self, x): 
+		for i in range(len(self.layers)): 
+			x = self.layers[i](x)
 
+		return x
+
+	def feature_list(self, x): 
+		out_list = []
+		for i in range(len(self.layers)): 
+			x = self.layers[i](x)
+			out_list.append(x)
+		return out_list
+
+	def intermediate_forward(self, x, layer_index):
+		for i in range(layer_index): 
+			x = self.layers[i](x)
+		return x
+
+
+class EnsembleClassifier(nn.Module): 
+	#Ensemble Class
+	def __init__(self, model_list): 
+		super(EnsembleClassifier, self).__init__()
+		self.model_list = model_list
+
+	def forward(self, x): 
+		logit_list = [] 
+		for model in self.model_list: 
+			model.eval()
+			logits = model(x)
+			logit_list.append(logits)
+		return logit_list 
 
 def process_data_single(single_data, colnames): 
 	### process_data_all will create train, test, validation folds for all classes with min_samples number of samples
@@ -43,8 +82,8 @@ def pred_results(model, data, ctypes):
 
 def top_shap_single(model, test_x, test_y, colnames):
 	#validate shapley values by calculating across all types
-	precalc_shap = joblib.load(filename='data/gddnn_kmeans_output.bz2')
-	feature_annotation = pd.read_csv('data/feature_annotations.csv', index_col = 0)
+	precalc_shap = joblib.load(filename='~/gdd_ens/data/training/gddnn_kmeans_output.bz2')
+	feature_annotation = pd.read_csv('~/gdd_ens/data/training/feature_annotations.csv', index_col = 0)
 
 	pred_ind = test_y
 	def spec_prob_function(x):
@@ -106,8 +145,8 @@ if __name__ == "__main__":
 	#load data, column names, cancer types and annotations
 	predict_single_fn = sys.argv[1]
 	single_data = pd.read_csv(predict_single_fn)
-	colnames = pd.read_csv('data/ft_colnames.csv')['columns'].values
-	ctypes = list(pd.read_csv('data/tumor_type_ordered.csv')['Cancer_Type'].values)
+	colnames = pd.read_csv('~/gdd_ens/data/training/ft_colnames.csv')['columns'].values
+	ctypes = list(pd.read_csv('~/gdd_ens/data/training/tumor_type_ordered.csv')['Cancer_Type'].values)
 
 	#process single instance, save
 	gdd_input = process_data_single(single_data, colnames)
@@ -115,7 +154,7 @@ if __name__ == "__main__":
 	gdd_data = torch.from_numpy(np.array(gdd_input)).float()
 	gdd_data = gdd_data.to(device)
 	# gdd_model = torch.load('/data/bergerm1/ch_GDDP2/ensemble.pt')
-	gdd_model = torch.load('ensemble.pt', map_location=torch.device(device))
+	gdd_model = torch.load('/Users/madisondarmofal/GDD_ENS/data/model/ensemble.pt', map_location=torch.device(device))
 
 	preds, probs, pred_label, allprobs = pred_results(gdd_model, gdd_data, ctypes) 
 	res = pd.DataFrame([preds,probs,pred_label]).T

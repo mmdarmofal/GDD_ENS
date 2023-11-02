@@ -125,7 +125,7 @@ def broad_cna(seg, log_ratio_threshold):
 	seg = seg.assign(interval = [pd.Interval(start, end) for start, end in zip(seg.start, seg.end)])
 	 
 	#load reference ct table
-	cytoband_table = pd.read_table('data/cytoband_table.txt')
+	cytoband_table = pd.read_table('~/gdd_ens/data/training/cytoband_table.txt')
 	cytoband_table = cytoband_table[cytoband_table.chr!='Y']
 	cytoband_table = cytoband_table.assign(length = (cytoband_table.end - cytoband_table.start) + 1)
 	
@@ -174,7 +174,7 @@ def broad_cna(seg, log_ratio_threshold):
 
 def fusions(SV):
 	#grab fusions, intragenic fusions
-	fusion_list = pd.read_csv('data/fusions.txt', sep = '\t')
+	fusion_list = pd.read_csv('~/gdd_ens/data/training/fusions.txt', sep = '\t')
 	fusion_genes = set(fusion_list[~(fusion_list.Gene_Fusion.isna())].Gene_Fusion)
 	fusion_intragenic = set(fusion_list[~(fusion_list.Intragenic_Fusion.isna())].Intragenic_Fusion) 
 	SV_data = SV[(SV.Hugo_Symbol.isin(fusion_genes)) | (SV.Fusion.isin(fusion_intragenic))] #each fusion is listed twice per sample with each fusion partner
@@ -192,7 +192,7 @@ def fusions(SV):
 
 def hotspots(maf):
 	#load hotspot list
-	hotspot_list = pd.read_csv('data/final_hotspot_list.csv', index_col = 0)
+	hotspot_list = pd.read_csv('~/gdd_ens/data/training/final_hotspot_list.csv', index_col = 0)
 	maf = maf.assign(Hotspot_Label = [str(hs) + str(hgsvp) for hs, hgsvp in zip(maf.Hugo_Symbol, maf.HGVSp_Short)])
 	maf['Consequence'] = maf.Consequence.fillna('')
 	nonsyn_consequences = ["missense_variant", "stop_gained", "frameshift_variant", "splice_donor_variant", 
@@ -232,8 +232,13 @@ def sbs_counts(maf_all):
 	
 	for ident in set(maf.ident):
 		chrom, start, end = ident.split('_')
-		chrom, start, end = chrom, int(start), int(end)
-		fasta_dic[ident] = norm(ref_fasta[chrom][start:end].seq)
+		try:
+			chrom, start, end = chrom, int(start), int(end)
+			fasta_dic[ident] = norm(ref_fasta[chrom][start:end].seq.upper())
+
+		except:
+			chrom, start, end = 'chr' + chrom, int(start), int(end)
+			fasta_dic[ident] = norm(ref_fasta[chrom][start:end].seq.upper())
 		
 	maf = maf.assign(ref_tri = [fasta_dic[ident] for ident in maf.ident])
 	maf = maf.assign(norm_alt = [alt if ref in pyrimidines else swap_dic[alt] for alt, ref in zip(maf.Tumor_Seq_Allele2, maf.Reference_Allele)])
@@ -287,62 +292,60 @@ def signatures(sigs):
 	return sig_data
 
 #parse args 
-#format : python generate_ft_table.py path/to/fasta path/to/repository_folder (label)
-#fasta is required, repository folder is required, label not required
+#format : python generate_ft_table.py path/to/fasta (file_table_label)
+#fasta is required, file_table_label not required
 
-if len(sys.argv) < 3:
+if len(sys.argv) < 2:
 	raise Exception("Not enough arguments")
 
 path_to_fasta = str(sys.argv[1])
-repository_folder = str(sys.argv[2])
 
-if len(sys.argv) > 3:
-	label = str(sys.argv[3])
+if len(sys.argv) > 2:
+	label = str(sys.argv[2])
 else:
 	label = 'msk_solid_heme_ft'
 
-print('specified fasta:', path_to_fasta)
-print('specified repository:', repository_folder)
-print('label:', label)
+print('Specified Fasta:', path_to_fasta)
+print('Output Table:', label)
 
 #set file path
 impact = True
 #load clinical data
-data_clinical_sample = pd.read_table(repository_folder + 'data_clinical_sample.txt', skiprows = 4)
-data_clinical_patient = pd.read_table(repository_folder + 'data_clinical_patient.txt', skiprows = 4)
+data_clinical_sample = pd.read_table('~/gdd_ens/data/msk_solid_heme/data_clinical_sample.txt', skiprows = 4)
+data_clinical_patient = pd.read_table('~/gdd_ens/data/msk_solid_heme/data_clinical_patient.txt', skiprows = 4)
 data_clinical_sample = pd.merge(data_clinical_sample, data_clinical_patient)
 data_clinical_sample = data_clinical_sample[data_clinical_sample.SAMPLE_ID.str.contains('IM')] #only looking at MSK-IMPACT patients
 
 #load cancertypes
-input_cancertypes = pd.read_table('data/tumor_type_final.txt') #need to fix
+input_cancertypes = pd.read_table('~/gdd_ens/data/training/tumor_type_final.txt') #need to fix
 feature_table = pd.merge(data_clinical_sample, input_cancertypes, how = 'left', on = ['CANCER_TYPE', 'CANCER_TYPE_DETAILED'])
 feature_table.Cancer_Type = feature_table.Cancer_Type.fillna('other')
 feature_table = feature_table.assign(Classification_Category = ['train' if ct != 'other' else 'other' for ct in feature_table.Cancer_Type])
 
 #Signatures
-sigs = pd.read_table(repository_folder +"msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt")
+sigs = pd.read_table('~/gdd_ens/data/msk_solid_heme/msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt')
 sigs = sigs.rename({'Tumor_Sample_Barcode':'SAMPLE_ID'}, axis = 1)
 
 #CN Data
-seg = pd.read_table(repository_folder + 'mskimpact_data_cna_hg19.seg')
+seg = pd.read_table('~/gdd_ens/data/msk_solid_heme/mskimpact_data_cna_hg19.seg')
 seg = seg.assign(seg_absmean=abs(seg['seg.mean']))
 seg = seg.rename({'ID':'SAMPLE_ID'}, axis = 1)
-cn = pd.read_table(repository_folder + 'data_CNA.txt')
+cn = pd.read_table('~/gdd_ens/data/msk_solid_heme/data_CNA.txt')
 
 #Fusions
-SV = pd.read_table(repository_folder + 'data_fusions.txt')
+SV = pd.read_table('~/gdd_ens/data/msk_solid_heme/data_fusions.txt')
 SV = SV.rename({'Tumor_Sample_Barcode':'SAMPLE_ID', 'Sample_ID':'SAMPLE_ID','Site2_Contig':'Hugo_Symbol'}, axis = 1)
 
 #Mutations 
-maf = pd.read_table(repository_folder + 'data_mutations_extended.txt', skiprows = 1)
+maf = pd.read_table('~/gdd_ens/data/msk_solid_heme/data_mutations_extended.txt', skiprows = 1)
 maf = maf.rename({'Tumor_Sample_Barcode':'SAMPLE_ID'}, axis =1)
 maf = maf.sort_values(by = 'SAMPLE_ID')
 maf_all_somatic = maf[maf.Mutation_Status=='SOMATIC'] #calculate purity estimates, TMB from all detected somatic mutations, not just impact-341 
 
 #correct Hugo Symbols for current notation, only include msk_impact 341 genes
-impact_genes = pd.read_excel('data/IMPACT505_Gene_list_detailed.xlsx', sheet_name = '505 genes')
+impact_genes = pd.read_excel('~/gdd_ens/data/training/IMPACT505_Gene_list_detailed.xlsx', sheet_name = '505 genes')
 impact_genes.columns = ['Hugo_Symbol', 'Name', 'N_exons', 'Panel']
-alt_names_list = pd.read_excel('data/IMPACT505_Gene_list_detailed.xlsx', sheet_name = 'alt_names')
+alt_names_list = pd.read_excel('~/gdd_ens/data/training/IMPACT505_Gene_list_detailed.xlsx', sheet_name = 'alt_names')
 alt_names = {}
 for hs_old, hs_current in zip(alt_names_list.HS_OLD.values, alt_names_list.HS_CURRENT.values):
 	alt_names[hs_old] = hs_current

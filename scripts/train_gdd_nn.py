@@ -13,8 +13,6 @@ from skopt.space import Real, Integer
 from skopt.utils import use_named_args
 from skopt.callbacks import EarlyStopper
 
-print('imports finished')
-
 class MyDataset(Dataset):
 	#data set class
 	def __init__(self, data, target): 
@@ -92,10 +90,10 @@ def process_data_folds(n_splits, label, fold):
 		n_features = number of distinct features
 		n_types = number of distinct types
 	'''
-	data_train = pd.read_csv('ft_train'+label+'.csv', sep = ',', squeeze = False, index_col = 0)
-	labels_train = pd.read_csv('labels_train'+label+'.csv', sep = ',', squeeze = True, index_col = 0)
-	data_test = pd.read_csv('ft_test'+label+'.csv', sep = ',', squeeze = False, index_col = 0)
-	labels_test = pd.read_csv('labels_test'+label+'.csv', sep = ',', squeeze = True, index_col = 0)
+	data_train = pd.read_csv('ft_train'+label+'.csv', sep = ',', index_col = 0)
+	labels_train = pd.read_csv('labels_train'+label+'.csv', sep = ',', index_col = 0).squeeze('columns')
+	data_test = pd.read_csv('ft_test'+label+'.csv', sep = ',', index_col = 0)
+	labels_test = pd.read_csv('labels_test'+label+'.csv', sep = ',', index_col = 0).squeeze('columns')
 	n_features = len(data_test.columns)
 	n_types = len(set(labels_test))
 	print('n_features = ', n_features)
@@ -176,6 +174,7 @@ def fitness(learning_rate, weight_decay, dropout_rate, num_fc_layers, num_fc_uni
 
 	criterion = torch.nn.CrossEntropyLoss() #Log Loss function
 	optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
+	print('model: ', model)
 	#train model
 	for epoch in range(200):
 		loss = 0 
@@ -192,7 +191,7 @@ def fitness(learning_rate, weight_decay, dropout_rate, num_fc_layers, num_fc_uni
 	if accuracy > best_accuracy: 
 		#if the model has better accuracy than the current best, save model and params
 		torch.save(model, path_best_model)
-		print(n_it, accuracy)
+		print('training it:', n_it, accuracy)
 		n_it += 1
 		params = pd.DataFrame([learning_rate, weight_decay, dropout_rate, num_fc_layers, num_fc_units]).T
 		params.columns = ['learning_rate', 'weight_decay', 'dropout', 'fc_layers', 'fc_nodes']
@@ -207,7 +206,7 @@ if __name__ == "__main__":
 	np.random.seed(0)
 	use_cuda = torch.cuda.is_available() 
 	print('cuda = ', use_cuda)
-	device = torch.device("cuda:0")
+	device = torch.device("cuda:0" if use_cuda==True else 'cpu')
 	#same labels, test_size, n_splits as in split_data
 	test_size = 20
 	n_splits = 10

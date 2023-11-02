@@ -1,6 +1,5 @@
 import numpy as np 
 import pandas as pd 
-import matplotlib.pyplot as plt 
 from sklearn.preprocessing import LabelEncoder
 
 from sklearn.model_selection import train_test_split
@@ -98,8 +97,7 @@ if __name__ == "__main__":
 	np.random.seed(0)
 	use_cuda = torch.cuda.is_available()
 	print('cuda = ', use_cuda)
-	device = torch.device("cuda:0")
-	torch.cuda.set_device(device)
+	device = torch.device("cuda:0" if use_cuda==True else 'cpu')
 	n_splits = 10
 	
 	if len(sys.argv) > 1:
