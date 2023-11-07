@@ -66,7 +66,7 @@ bwa index hg19.fa
    >
 
    ```
-   $ python train_gdd_nn.py <fold> <label>
+   $ python scripts/train_gdd_nn.py <fold> <label>
    ```
 
    > Outputs: 
