@@ -13,10 +13,34 @@ Tumor type classifier using cancer genomic panel sequencing data
 * [Scopt Library](https://scikit-optimize.github.io/stable/index.html)
 
 ## Data Used:
-* [data_training](./doc/data.md#data_training)
-* [msk solid heme](./doc/data.md#msk_solid_heme)
-* [data_model](./doc/data.md#data_model)
-* [data_adaptivePrior](./doc/data.md#data_adaptiveprior)
+* raw inputs (msk_solid_heme)
+   * data_CNA.txt
+   * data_mutations_extended.txt
+   * data_clinical_patient.txt
+   * msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt
+   * data_clinical_sample.txt
+   * mskimpact_data_cna_hg19.seg
+   * data_fusions.txt
+* feature table generation 
+   * IMPACT505_Gene_list_detailed.xlsx
+   * cytoband_table.txt
+   * final_hotspot_list.csv
+   * feature_annotations.csv
+   * ft_colnames.csv
+   * fusions.txt
+   * tumor_type_final.txt, tumor_type_ordered.csv
+   * train_N.csv
+* models
+   * ensemble.pt
+   * ensemble_models.zip - individual MLPs used to generate final model
+* GDD-ENS single runs
+   * gddnn_kmeans_output.bz2 - shapley values from original model
+   * single_ft.csv - template input file
+   * single_ft_res.csv - expected output.file    
+* adaptive prior
+   * prior_table_single.csv, prior_table_multi.csv - template adaptable prior files
+   * single_ft_post_prior.csv - template adaptable prior output file
+
 
 ## Workflow:
 ### GDD-ENS Model Training and Testing
@@ -27,7 +51,7 @@ Tumor type classifier using cancer genomic panel sequencing data
    3. Combine 10 models into single ensemble model (GDD-ENS)
 
 ### Single GDD-ENS runs
-1. Generate prediction from a single sample
+1. Generate feature table and prediction for a single sample
 2. Re-scale predictions using prediction-specific adaptable prior (if applicable)
 
 ## Quick Links and Tips:
