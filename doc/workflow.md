@@ -31,7 +31,7 @@ bwa index hg19.fa
    >
 
    ```
-   $ python generate_feature_table.py <path/to/fasta> <label>
+   $ python scripts/generate_feature_table.py <path/to/fasta> <label>
   ```
 
    > Outputs:
@@ -47,7 +47,7 @@ bwa index hg19.fa
    >
 
    ```
-   $ python split_data.py <label>
+   $ python scripts/split_data.py <label>
    ```
 
    > Outputs: 
@@ -80,7 +80,7 @@ bwa index hg19.fa
    >
 
    ```
-   $ python gdd_ensemble.py <label>
+   $ python scripts/gdd_ensemble.py <label>
    ```
    > Outputs: 
    > * ensemble.pt: final ensemble model
@@ -96,7 +96,7 @@ bwa index hg19.fa
    >
 
    ```
-   $ python run_gdd_single.py <path/to/model> <path/to/predict_single_fn> <path/to/final_res_fn>
+   $ python scripts/run_gdd_single.py <path/to/model> <path/to/predict_single_fn> <path/to/final_res_fn>
    ```
 
    > Outputs: 
@@ -112,7 +112,7 @@ bwa index hg19.fa
    >
 
    ```
-   $ python adaptable_prior.py <path/to/adaptable_prior_file> <path/to/original_output> <label>
+   $ python scripts/adaptable_prior.py <path/to/adaptable_prior_file> <path/to/original_output> <label>
    ```
 
    > Outputs: 
