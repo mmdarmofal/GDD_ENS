@@ -7,7 +7,7 @@ conda env create gdd_ens -f env/requirements.txt
 
 ### Unzip the Repository Folder:
 ```
-unzip data/data_training/msk_solid_heme.zip
+unzip data/msk_solid_heme.zip
 ```
 
 ### Download & Index the Reference Fasta
@@ -104,16 +104,15 @@ bwa index hg19.fa
 
 ## Adaptable prior:
 
-> *Requires original full probability array and outputted formatted as per template. Compatable with one or more priors, specify in adaptable prior table (prior_table_single vs prior_table_multi)*
+> *Requires output of a single run. Compatable with one or more priors, specified in the adaptable prior table with one column (template: prior_table_single)  ore multiple (prior_table_multi)*
 
    > Inputs: 
-   > * prior_file: specified prior, ex: single_rescale_array.csv, multi_rescale_array.csv if multi prior adjust
-   > * original_output_file: outputted results for single sample, ex: template_output_liver.csv
-   > * probs_file: full outputted probability array for single sample, ex: template_allprobs_liver.csv
+   > * prior_file: specified prior, ex: single_rescale_array.csv, multi_rescale_array.csv 
+   > * original_output_file: outputted results by GDD-ENS for single sample, ex: template_output_liver.csv
    >
 
    ```
-   $ python adaptable_prior.py <path/to/adaptable_prior> <path/to/original_output> <path/to/original_allprobs> <label>
+   $ python adaptable_prior.py <path/to/adaptable_prior_file> <path/to/original_output> <label>
    ```
 
    > Outputs: 
