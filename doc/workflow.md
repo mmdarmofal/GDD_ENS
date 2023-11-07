@@ -90,8 +90,8 @@ bwa index hg19.fa
 
 ## Single GDD-ENS runs:
    > Inputs:
-   > * modle: filepath to GDD model
-   > * predict_single_fn: filepath to datatable for sample which is being run through GDD
+   > * model: filepath to GDD model
+   > * predict_single_fn: filepath to datatable for sample which is being run through GDD (required column = 'SAMPLE_ID')
    > * final_res_fn: filepath to save result after running sample through GDD
    >
 
@@ -107,7 +107,7 @@ bwa index hg19.fa
 > *Requires output of a single run. Compatable with one or more priors, specified in the adaptable prior table with one column (template: prior_table_single)  ore multiple (prior_table_multi)*
 
    > Inputs: 
-   > * prior_file: specified prior, ex: single_rescale_array.csv, multi_rescale_array.csv 
+   > * prior_file: specified prior, ex: prior_table_single.csv, prior_table_multi.csv
    > * original_output_file: outputted results by GDD-ENS for single sample, ex: template_output_liver.csv
    >
 
