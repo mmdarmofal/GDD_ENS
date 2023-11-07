@@ -27,12 +27,11 @@ bwa index hg19.fa
 
    > Inputs: 
    > * path_to_fasta: path to fasta, ex: hg19.fa
-   > * repository_folder: folder where data is stored, i.e. data/data_training/msk_solid_heme
    > * label: title of the final output table (if not specified, msk_solid_heme_ft.csv)
    >
 
    ```
-   $ python generate_feature_table.py <path/to/fasta> <path/to/repository> <label>
+   $ python generate_feature_table.py <path/to/fasta> <label>
   ```
 
    > Outputs:
