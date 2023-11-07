@@ -89,13 +89,14 @@ bwa index hg19.fa
    >
 
 ## Single GDD-ENS runs:
-   > Inputs: 
+   > Inputs:
+   > * modle: filepath to GDD model
    > * predict_single_fn: filepath to datatable for sample which is being run through GDD
    > * final_res_fn: filepath to save result after running sample through GDD
    >
 
    ```
-   $ python run_gdd_single.py <path/to/predict_single_fn> <path/to/final_res_fn>
+   $ python run_gdd_single.py <path/to/model> <path/to/predict_single_fn> <path/to/final_res_fn>
    ```
 
    > Outputs: 
