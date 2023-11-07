@@ -19,16 +19,21 @@ Tumor type classifier using cancer genomic panel sequencing data
 * [data_adaptivePrior](./doc/data.md#data_adaptiveprior)
 
 ## Workflow:
+### GDD-ENS Model Training and Testing
 1. Generate feature table
 2. Train and Test GDD-ENS Model
    1. Split data into training and testing
    2. Train 10 individual models for classification
    3. Combine 10 models into single ensemble model (GDD-ENS)
-3. Single GDD-ENS runs
-4. Adaptable prior
 
-## Quick Links:
+### Single GDD-ENS runs
+3. Generate prediction from a single sample
+4. Re-scale predictions using prediction-specific adaptable prior (if applicable)
+
+## Quick Links and Tips:
 * [Example Workflow](doc/workflow.md)
+* If re-training GDD-ENS or training a modified GDD-ENS we recommend using HPC if available and submitting jobs through the bash scripts provided in the [scripts folder](./doc/scripts.md#scripts)
+* For any file-based data unloading errors we recommend re-downloading the models/files directly from this repo and re-running
 
 ## Credits:
 GDD_ENS was originally written by Madison Darmofal <darmofam@mskcc.org>.
