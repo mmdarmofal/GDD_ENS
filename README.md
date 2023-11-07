@@ -32,7 +32,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 
 ## Quick Links and Tips:
 * [Example Workflow](doc/workflow.md)
-* If re-training GDD-ENS or training a modified GDD-ENS we recommend using HPC if available and submitting jobs through the bash scripts provided in the [scripts folder](./doc/scripts.md#scripts)
+* If re-training GDD-ENS or training a modified GDD-ENS we recommend using HPC if available and submitting jobs through the bash scripts provided in the [scripts folder](.#scripts)
 * For any file-based data unloading errors we recommend re-downloading the models/files directly from this repo and re-running
 
 ## Credits:
