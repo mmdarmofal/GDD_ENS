@@ -27,13 +27,13 @@ Tumor type classifier using cancer genomic panel sequencing data
    3. Combine 10 models into single ensemble model (GDD-ENS)
 
 ### Single GDD-ENS runs
-3. Generate prediction from a single sample
-4. Re-scale predictions using prediction-specific adaptable prior (if applicable)
+1. Generate prediction from a single sample
+2. Re-scale predictions using prediction-specific adaptable prior (if applicable)
 
 ## Quick Links and Tips:
 * [Example Workflow](doc/workflow.md)
 * If re-training GDD-ENS or training a modified GDD-ENS we recommend using HPC if available and submitting jobs through the bash scripts provided in the [scripts folder](./scripts)
-* For any file-based data unloading errors we recommend re-downloading the models/files directly from this repo and re-running
+* For any file-based data unloading errors we recommend re-downloading the models/files directly from the GDD-ENS github repo
 
 ## Credits:
 GDD_ENS was originally written by Madison Darmofal <darmofam@mskcc.org>.
