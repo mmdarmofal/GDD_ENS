@@ -26,7 +26,6 @@ Tumor type classifier using cancer genomic panel sequencing data
    * cytoband_table.txt
    * final_hotspot_list.csv
    * feature_annotations.csv
-   * ft_colnames.csv
    * fusions.txt
    * tumor_type_final.txt, tumor_type_ordered.csv
 * models
@@ -34,11 +33,10 @@ Tumor type classifier using cancer genomic panel sequencing data
    * ensemble_models.zip - individual MLPs used to generate final model
 * GDD-ENS single runs
    * gddnn_kmeans_output.bz2 - shapley values from original model
-   * single_ft.csv - template input file
-   * single_ft_res.csv - expected output.file    
-* adaptive prior
+   * single_ft.csv - template input file (required columns: SAMPLE_ID)
+   * ft_colnames.csv
+* adaptable prior
    * prior_table_single.csv, prior_table_multi.csv - template adaptable prior files
-   * single_ft_post_prior.csv - template adaptable prior output file
 
 
 ## Workflow:
