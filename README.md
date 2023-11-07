@@ -52,7 +52,8 @@ Tumor type classifier using cancer genomic panel sequencing data
 2. Re-scale predictions using prediction-specific adaptable prior (if applicable)
 
 ## Quick Links and Tips:
-* [Example Workflow](doc/workflow.md)
+* [Full Example Workflow](doc/workflow.md)
+* If running GDD-ENS locally, execute all scripts from the GDD_ENS main folder
 * If re-training GDD-ENS or training a modified GDD-ENS we recommend using HPC if available and submitting jobs through the bash scripts provided in the [scripts folder](./scripts)
 * For any file-based data unloading errors we recommend re-downloading the models/files directly from the GDD-ENS github repo
 
