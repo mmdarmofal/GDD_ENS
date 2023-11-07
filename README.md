@@ -29,7 +29,6 @@ Tumor type classifier using cancer genomic panel sequencing data
    * ft_colnames.csv
    * fusions.txt
    * tumor_type_final.txt, tumor_type_ordered.csv
-   * train_N.csv
 * models
    * ensemble.pt
    * ensemble_models.zip - individual MLPs used to generate final model
