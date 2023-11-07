@@ -108,7 +108,7 @@ bwa index hg19.fa
 
    > Inputs: 
    > * prior_file: specified prior, ex: prior_table_single.csv, prior_table_multi.csv
-   > * original_output_file: outputted results by GDD-ENS for single sample, ex: template_output_liver.csv
+   > * original_output_file: outputted results by GDD-ENS for single sample, ex: single_ft_res.csv
    >
 
    ```
