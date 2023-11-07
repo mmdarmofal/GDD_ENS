@@ -150,7 +150,6 @@ if __name__ == "__main__":
 
 	#load data, column names, cancer types and annotations
 	model_path = sys.argv[1]
-
 	predict_single_fn = sys.argv[2]
 	single_data = pd.read_csv(predict_single_fn)
 	colnames = pd.read_csv('data/ft_colnames.csv')['columns'].values
@@ -163,6 +162,7 @@ if __name__ == "__main__":
 	gdd_data = gdd_data.to(device)
 	# gdd_model = torch.load('/data/bergerm1/ch_GDDP2/ensemble.pt')
 	gdd_model = torch.load(model_path, map_location=torch.device(device))
+	print('model loaded:' model_path)
 
 	preds, probs, pred_label, allprobs = pred_results(gdd_model, gdd_data, ctypes) 
 	res = pd.DataFrame([preds,probs,pred_label]).T

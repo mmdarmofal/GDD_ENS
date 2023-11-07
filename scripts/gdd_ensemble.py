@@ -117,27 +117,22 @@ if __name__ == "__main__":
 	x_test, y_test = x_test.to(device), y_test.to(device)
 	
 	#if using pre-trained data model
-	if os.path.exists('data/ensemble' + label + '.pt'):
-		fold_ensemble = torch.load('data/ensemble' + label + '.pt', map_location=device)
+	fold_model_list = [] #list of each models
+	for i in range(1, n_splits+1): 
+		#load model
+		if os.path.exists('output/fold_'+ str(i) +  label + '.pt'):
+			path_best_model = 'output/fold_'+ str(i) +  label + '.pt' #if re-trained or re-ran
+		else:
+			path_best_model = 'data/ensemble_models/fold_'+ str(i) +  label + '.pt' #if loading directly from the original model 
+		model = torch.load(path_best_model, map_location = device)
+		#evaluate accuracy
+		acc = evaluate_accuracy(model, test_loader)
+		#append to overall list
+		fold_model_list.append(model)
 
-	else:
-		#aggregate ensemble
-		fold_model_list = [] #list of each models
-		for i in range(1, n_splits+1): 
-			#load model
-			if os.path.exists('output/fold_'+ str(i) +  label + '.pt'):
-				path_best_model = 'output/fold_'+ str(i) +  label + '.pt' #if re-trained or re-ran
-			else:
-				path_best_model = 'data/ensemble_models/fold_'+ str(i) +  label + '.pt' #if loading directly from the original model 
-			model = torch.load(path_best_model, map_location = device)
-			#evaluate accuracy
-			acc = evaluate_accuracy(model, test_loader)
-			#append to overall list
-			fold_model_list.append(model)
-
-		#create full ensemble, save
-		fold_ensemble = EnsembleClassifier(fold_model_list)
-		torch.save(fold_ensemble, 'output/ensemble' + label + '.pt')
+	#create full ensemble, save
+	fold_ensemble = EnsembleClassifier(fold_model_list)
+	torch.save(fold_ensemble, 'output/ensemble' + label + '.pt')
 
 	#report accuracy
 	fold_logits = fold_ensemble(x_test)
