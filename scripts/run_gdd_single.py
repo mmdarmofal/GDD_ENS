@@ -8,8 +8,6 @@ import torch
 import torch.nn as nn 
 import torch.nn.functional as F 
 
-#sys.path.insert(0, '../')
-#os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 class MLP(torch.nn.Module):
@@ -60,11 +58,15 @@ class EnsembleClassifier(nn.Module):
 		return logit_list 
 
 def process_data_single(single_data, colnames): 
-	### process_data_all will create train, test, validation folds for all classes with min_samples number of samples
+	### generate a single feature table to run through GDD-ENS 
+	if 'CANCER_TYPE' not in single_data.columns:
+		single_data = single_data.assign(CANCER_TYPE='NA')
+	if 'Classification_Category' not in single_data.columns:
+		single_data = single_data.assign(Classification_Category='NA')
 	values = [single_data[col].values[0] if col in single_data.columns else 0 for col in colnames]
 	values = pd.DataFrame(values).T
 	values.columns = colnames
-	return values
+	return single_data, values
 
 def pred_results(model, data, ctypes):
 	#similar to softmax_predictive_accuracy function
@@ -82,8 +84,8 @@ def pred_results(model, data, ctypes):
 
 def top_shap_single(model, test_x, test_y, colnames):
 	#validate shapley values by calculating across all types
-	precalc_shap = joblib.load(filename='~/gdd_ens/data/training/gddnn_kmeans_output.bz2')
-	feature_annotation = pd.read_csv('~/gdd_ens/data/training/feature_annotations.csv', index_col = 0)
+	precalc_shap = joblib.load(filename='data/gddnn_kmeans_output.bz2')
+	feature_annotation = pd.read_csv('data/feature_annotations.csv', index_col = 0)
 
 	pred_ind = test_y
 	def spec_prob_function(x):
@@ -141,20 +143,26 @@ if __name__ == "__main__":
 	torch.manual_seed(3407)
 	np.random.seed(0)
 	
-	
+	sys.path.insert(0, '../')
+
+	if len(sys.argv) < 3:
+		raise Exception("Not enough arguments")
+
 	#load data, column names, cancer types and annotations
-	predict_single_fn = sys.argv[1]
+	model_path = sys.argv[1]
+
+	predict_single_fn = sys.argv[2]
 	single_data = pd.read_csv(predict_single_fn)
-	colnames = pd.read_csv('~/gdd_ens/data/training/ft_colnames.csv')['columns'].values
-	ctypes = list(pd.read_csv('~/gdd_ens/data/training/tumor_type_ordered.csv')['Cancer_Type'].values)
+	colnames = pd.read_csv('data/ft_colnames.csv')['columns'].values
+	ctypes = list(pd.read_csv('data/tumor_type_ordered.csv')['Cancer_Type'].values)
 
 	#process single instance, save
-	gdd_input = process_data_single(single_data, colnames)
+	single_data, gdd_input = process_data_single(single_data, colnames)
 	#run predictions
 	gdd_data = torch.from_numpy(np.array(gdd_input)).float()
 	gdd_data = gdd_data.to(device)
 	# gdd_model = torch.load('/data/bergerm1/ch_GDDP2/ensemble.pt')
-	gdd_model = torch.load('/Users/madisondarmofal/GDD_ENS/data/model/ensemble.pt', map_location=torch.device(device))
+	gdd_model = torch.load(model_path, map_location=torch.device(device))
 
 	preds, probs, pred_label, allprobs = pred_results(gdd_model, gdd_data, ctypes) 
 	res = pd.DataFrame([preds,probs,pred_label]).T
@@ -173,5 +181,5 @@ if __name__ == "__main__":
 
 	#format final res
 	final_res = format_gdd_output(single_data, res, allprobs, top_shap)
-	final_res_fn = sys.argv[2]
+	final_res_fn = sys.argv[3]
 	final_res.to_csv(final_res_fn)

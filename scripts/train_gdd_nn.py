@@ -90,10 +90,10 @@ def process_data_folds(n_splits, label, fold):
 		n_features = number of distinct features
 		n_types = number of distinct types
 	'''
-	data_train = pd.read_csv('ft_train'+label+'.csv', sep = ',', index_col = 0)
-	labels_train = pd.read_csv('labels_train'+label+'.csv', sep = ',', index_col = 0).squeeze('columns')
-	data_test = pd.read_csv('ft_test'+label+'.csv', sep = ',', index_col = 0)
-	labels_test = pd.read_csv('labels_test'+label+'.csv', sep = ',', index_col = 0).squeeze('columns')
+	data_train = pd.read_csv('output/ft_train'+label+'.csv', sep = ',', index_col = 0)
+	labels_train = pd.read_csv('output/labels_train'+label+'.csv', sep = ',', index_col = 0).squeeze('columns')
+	data_test = pd.read_csv('output/ft_test'+label+'.csv', sep = ',', index_col = 0)
+	labels_test = pd.read_csv('output/labels_test'+label+'.csv', sep = ',', index_col = 0).squeeze('columns')
 	n_features = len(data_test.columns)
 	n_types = len(set(labels_test))
 	print('n_features = ', n_features)
@@ -174,9 +174,8 @@ def fitness(learning_rate, weight_decay, dropout_rate, num_fc_layers, num_fc_uni
 
 	criterion = torch.nn.CrossEntropyLoss() #Log Loss function
 	optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
-	print('model: ', model)
 	#train model
-	for epoch in range(200):
+	for epoch in range(2):
 		loss = 0 
 		model.train()
 		for i, (x,y) in enumerate(train_loader): 
@@ -222,12 +221,12 @@ if __name__ == "__main__":
 	train_loader = create_loader(x_train, y_train)
 	val_loader = create_loader(x_val, y_val)
 	test_loader = create_loader(x_test, y_test)
-	path_best_model = 'fold_' + str(fold+1) + label + '.pt' #saves the best found model at this path
-	path_best_params = 'fold_' + str(fold+1) + label + '_params.csv' #saves the best found params
+	path_best_model = 'output/fold_' + str(fold+1) + label + '.pt' #saves the best found model at this path
+	path_best_params = 'output/fold_' + str(fold+1) + label + '_params.csv' #saves the best found params
 	best_accuracy = 0.0 
 	n_it = 0
 	#gp_minimize finds the minimum of the fitness function by approximating it with a gaussian process, acquisition function over a gaussian prior chooses next param to evaluate
-	search_result = gp_minimize(func=fitness, dimensions=dimensions, acq_func='gp_hedge', n_calls=300, x0=default_paramaters, random_state=0, n_jobs = -1, callback = Iteration_Stop(max_upd = 5)) 
+	search_result = gp_minimize(func=fitness, dimensions=dimensions, acq_func='gp_hedge', n_calls=11, x0=default_paramaters, random_state=0, n_jobs = -1, callback = Iteration_Stop(max_upd = 1)) 
 	#print accuracy of best result
 	best_model = torch.load(path_best_model)
 	test_micro = evaluate_accuracy_micro(best_model, test_loader)

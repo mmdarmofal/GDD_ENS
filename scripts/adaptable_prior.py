@@ -1,7 +1,5 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd 
-import seaborn as sns
 import sklearn.metrics
 import sklearn.calibration
 import sys
@@ -55,8 +53,8 @@ def prior_adjust(prior_dic_list, output, allprobs, type_labels, label):
         new_preds.append(np.argmax(rescale_array))
         new_probs.append(np.max(rescale_array))
         pd.DataFrame(rescale_array).to_csv(label + '_rescale_array.csv')
-    output = output.assign(orig_pred = [type_labels[ct] for ct in output.pred])
-    output = output.assign(orig_prob = output.probs)
+    output = output.assign(orig_pred = output.Pred1)
+    output = output.assign(orig_prob = output.Conf1)
     output = output.assign(new_pred= [type_labels[pred] for pred in new_preds])
     output = output.assign(new_prob= new_probs)
     return output
@@ -65,15 +63,18 @@ def prior_adjust(prior_dic_list, output, allprobs, type_labels, label):
 
 if __name__ == "__main__":
     #load datasets 
-    prior_file, output_file, probs_file = sys.argv[1], sys.argv[2], sys.argv[3]
-    if len(sys.argv) > 4:
-        label = sys.argv[4]
+    prior_file, output_file = sys.argv[1], sys.argv[2]
+    if len(sys.argv) > 3:
+        label = sys.argv[3]
     else:
         label = output_file.split('.')[0]
+
+    sys.path.insert(0, '../')
+
     prior_table = pd.read_csv(prior_file, index_col = 0)
     type_labels = sorted(list(prior_table.index.values))
-    output_test = pd.read_csv(output_file)
-    allprobs = pd.read_csv(probs_file, index_col = 0)
+    output_test = pd.read_csv(output_file, index_col = 0)
+    allprobs = output_test[[i for i in output_test.columns if i in type_labels]]
     prior_dic_list = make_prior_dics(prior_table, type_labels)
     output_test = prior_adjust(prior_dic_list, output_test, allprobs, type_labels, label)
     output_test.to_csv(label + '_post_prior.csv') 
