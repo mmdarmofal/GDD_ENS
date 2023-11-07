@@ -13,7 +13,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 * [Scopt Library](https://scikit-optimize.github.io/stable/index.html)
 
 ## Data Used:
-* raw inputs (msk_solid_heme)
+* Raw Inputs (msk_solid_heme)
    * data_CNA.txt
    * data_mutations_extended.txt
    * data_clinical_patient.txt
@@ -21,21 +21,21 @@ Tumor type classifier using cancer genomic panel sequencing data
    * data_clinical_sample.txt
    * mskimpact_data_cna_hg19.seg
    * data_fusions.txt
-* feature table generation 
+* Feature Table
    * IMPACT505_Gene_list_detailed.xlsx
    * cytoband_table.txt
    * final_hotspot_list.csv
    * feature_annotations.csv
    * fusions.txt
    * tumor_type_final.txt, tumor_type_ordered.csv
-* models
+* Models
    * ensemble.pt
    * ensemble_models.zip - individual MLPs used to generate final model
 * GDD-ENS single runs
    * gddnn_kmeans_output.bz2 - shapley values from original model
-   * single_ft.csv - template input file (required columns: SAMPLE_ID)
+   * single_ft.csv - template input file with all columns (only required column is SAMPLE_ID)
    * ft_colnames.csv
-* adaptable prior
+* Adaptable Prior
    * prior_table_single.csv, prior_table_multi.csv - template adaptable prior files
 
 
