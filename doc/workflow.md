@@ -31,7 +31,7 @@ bwa index hg19.fa
 
 ``````
 
-## Generate feature table:
+## Generate full feature table:
 
    > Inputs: 
    > * path_to_fasta: path to fasta, ex: hg19.fa
