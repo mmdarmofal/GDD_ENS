@@ -86,7 +86,7 @@ bwa index hg19.fa
    >
 
    ```
-   $ python scripts/gdd_ensemble.py
+   $ python scripts/gdd_ensemble.py 'True'
    ```
    > Outputs: 
    > * ensemble.pt: final ensemble model
@@ -118,7 +118,7 @@ bwa index hg19.fa
    > * new_output_file: filename for results after adjusting for the prior
 
    ```
-   $ python scripts/adaptable_prior.py <path/to/adaptable_prior_file> <path/to/original_output> <label>
+   $ python scripts/adaptable_prior.py <path/to/adaptable_prior_file> <path/to/original_output> <path/to/new_output>
    ```
 
    > Outputs: 
