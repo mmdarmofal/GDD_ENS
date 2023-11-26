@@ -3,10 +3,10 @@
 #BSUB -W 72:00
 #
 # Set output file
-#BSUB -o  generate_feature_table.out
+#BSUB -o  scripts/generate_feature_table.out
 #
 # Set error file
-#BSUB -eo generate_feature_table.stderr
+#BSUB -eo scripts/generate_feature_table.stderr
 #
 # Specify node group
 #BSUB -q gpuqueue -n 1 -gpu "num=1:mps=yes"
@@ -19,6 +19,6 @@
 #BSUB -J "generate_feature_table"
 source ~/.bashrc
 module load cuda/10.1
-conda activate vir-env
-python generate_feature_table.py /data/morrisq/darmofam/gr37.fasta msk_solid_heme/
+conda activate gdd_ens_env
+python scripts/generate_feature_table.py /data/morrisq/darmofam/gr37.fasta /output/msk_solid_heme_ft.csv
 

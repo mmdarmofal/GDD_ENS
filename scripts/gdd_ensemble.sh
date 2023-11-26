@@ -3,10 +3,10 @@
 #BSUB -W 72:00
 #
 # Set output file
-#BSUB -o  gdd_ensemble.out
+#BSUB -o  scripts/gdd_ensemble.out
 #
 # Set error file
-#BSUB -eo gdd_ensemble.stderr
+#BSUB -eo scripts/gdd_ensemble.stderr
 #
 # Specify node group
 #BSUB -q gpuqueue -n 1 -gpu "num=1:mps=yes"
@@ -19,6 +19,6 @@
 #BSUB -J "gdd_ensemble"
 source ~/.bashrc
 module load cuda/10.1
-conda activate vir-env
-python gdd_ensemble.py
+conda activate gdd_ens_env
+python scripts/gdd_ensemble.py True 
 

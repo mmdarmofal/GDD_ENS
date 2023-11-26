@@ -29,7 +29,7 @@ def make_prior_dics(prior_table, type_labels):
     return curated_dic_list
 
 
-def prior_adjust(prior_dic_list, output, allprobs, type_labels, label):
+def prior_adjust(prior_dic_list, output, allprobs, type_labels, new_output_file):
     #adjust given the biopsy site for a pre-defined site, for as many examples as are in output and as many priors are provided in prior_table
     new_preds = []
     new_probs = []
@@ -52,23 +52,21 @@ def prior_adjust(prior_dic_list, output, allprobs, type_labels, label):
         #print('rescale', rescale_array)
         new_preds.append(np.argmax(rescale_array))
         new_probs.append(np.max(rescale_array))
-        pd.DataFrame(rescale_array).to_csv(label + '_rescale_array.csv')
+        output_file_label = new_output_file.split('.')[0]
+        pd.DataFrame(rescale_array).to_csv(output_file_label + '_rescale_array.csv')
     output = output.assign(orig_pred = output.Pred1)
     output = output.assign(orig_prob = output.Conf1)
     output = output.assign(new_pred= [type_labels[pred] for pred in new_preds])
     output = output.assign(new_prob= new_probs)
+    output.to_csv(new_output_file) 
+
     return output
 
 
 
 if __name__ == "__main__":
     #load datasets 
-    prior_file, output_file = sys.argv[1], sys.argv[2]
-    if len(sys.argv) > 3:
-        label = sys.argv[3]
-    else:
-        label = output_file.split('.')[0]
-
+    prior_file, output_file, new_output_file = sys.argv[1], sys.argv[2], sys.argv[3]
     sys.path.insert(0, '../')
 
     prior_table = pd.read_csv(prior_file, index_col = 0)
@@ -76,5 +74,4 @@ if __name__ == "__main__":
     output_test = pd.read_csv(output_file, index_col = 0)
     allprobs = output_test[[i for i in output_test.columns if i in type_labels]]
     prior_dic_list = make_prior_dics(prior_table, type_labels)
-    output_test = prior_adjust(prior_dic_list, output_test, allprobs, type_labels, label)
-    output_test.to_csv(label + '_post_prior.csv') 
+    output_test = prior_adjust(prior_dic_list, output_test, allprobs, type_labels, new_output_file)

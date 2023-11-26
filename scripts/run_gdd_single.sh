@@ -3,10 +3,10 @@
 #BSUB -W 72:00
 #
 # Set output file
-#BSUB -o  run_gdd_single.out
+#BSUB -o  scripts/run_gdd_single.out
 #
 # Set error file
-#BSUB -eo run_gdd_single.stderr
+#BSUB -eo scripts/run_gdd_single.stderr
 #
 # Specify node group
 #BSUB -q gpuqueue -n 1 -gpu "num=1:mps=yes"
@@ -19,6 +19,6 @@
 #BSUB -J "run_gdd_single"
 source ~/.bashrc
 module load cuda/10.1
-conda activate vir-env
-python run_gdd_single.py single_ft.csv single_output.csv
+conda activate gdd_ens_env
+python scripts/run_gdd_single.py data/ensemble.pt data/single_ft.csv output/single_output.csv
 

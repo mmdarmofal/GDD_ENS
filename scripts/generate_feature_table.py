@@ -292,21 +292,17 @@ def signatures(sigs):
 	return sig_data
 
 #parse args 
-#format : python generate_ft_table.py path/to/fasta (file_table_label)
-#fasta is required, file_table_label not required
+#format : python generate_ft_table.py path/to/fasta path/to/ft
+#both fasta and output ft filename are required
 
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
 	raise Exception("Not enough arguments")
 
 path_to_fasta = str(sys.argv[1])
-
-if len(sys.argv) > 2:
-	label = str(sys.argv[2])
-else:
-	label = 'msk_solid_heme_ft'
+path_to_ft = str(sys.argv[2])
 
 print('Specified Fasta:', path_to_fasta)
-print('Output Table:', label)
+print('Output Table:', path_to_ft)
 
 #set file path
 impact = True
@@ -390,5 +386,5 @@ feature_table = feature_table.merge(sbs_counts(maf_all), on = 'SAMPLE_ID', how =
 print('signatures integrated')
 
 #save feature table
-feature_table.to_csv('output/' + label + '.csv')
+feature_table.to_csv(path_to_ft)
 

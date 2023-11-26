@@ -33,12 +33,12 @@ class EnsembleClassifier(nn.Module):
 
 
 def process_data(): 
-	#Same as process_data_bal in split script, but loads pre-saved versions of training and testing set given the label
+	#Same as process_data_bal in split script, but loads pre-saved versions of training and testing set
 	#returns train and test splits prior to splitting into ensemble folds
-	x_train = pd.read_csv('output/ft_train' + label + '.csv', sep = ',', squeeze = False, index_col = 0)
-	y_train = pd.read_csv('output/labels_train' + label + '.csv', sep = ',', squeeze = True, index_col = 0)
-	x_test = pd.read_csv('output/ft_test' + label + '.csv', sep = ',', squeeze = False, index_col = 0)
-	y_test = pd.read_csv('output/labels_test' + label + '.csv', sep = ',', squeeze = True, index_col = 0)
+	x_train = pd.read_csv('output/ft_train.csv', sep = ',', squeeze = False, index_col = 0)
+	y_train = pd.read_csv('output/labels_train.csv', sep = ',', squeeze = True, index_col = 0)
+	x_test = pd.read_csv('output/ft_test.csv', sep = ',', squeeze = False, index_col = 0)
+	y_test = pd.read_csv('output/labels_test.csv', sep = ',', squeeze = True, index_col = 0)
 
 	encoder = LabelEncoder()
 	y_train = encoder.fit_transform(y_train)
@@ -67,7 +67,7 @@ def evaluate_accuracy(model, data_loader):
 	return(accuracy)
 
 
-def softmax_predictive_accuracy(logits_list, y, label):
+def softmax_predictive_accuracy(logits_list, y):
     #ensemble accuracy function which evaluates accuracy and saves stats for further analysis
     probs_list = [F.softmax(logits, dim=1) for logits in logits_list]
 
@@ -79,7 +79,7 @@ def softmax_predictive_accuracy(logits_list, y, label):
     pred_probs = pred_probs.cpu().data.numpy()
     preds = pred_class.cpu().data.numpy()
     #save probs
-    np.savetxt('output/ensemble_allprobs' + label + '.csv', probs, delimiter = ',')
+    np.savetxt('output/ensemble_allprobs.csv', probs, delimiter = ',')
     correct = (pred_class == y)
     pred_acc = correct.float().mean()
  
@@ -88,7 +88,7 @@ def softmax_predictive_accuracy(logits_list, y, label):
     org_data.columns = ['true']
     org_data = org_data.assign(pred = preds)
     org_data = org_data.assign(probs = pred_probs)
-    org_data.to_csv('output/ensemble_results' + label + '.csv', index=False)
+    org_data.to_csv('output/ensemble_results.csv', index=False)
     return pred_acc
 
 if __name__ == "__main__":
@@ -100,12 +100,7 @@ if __name__ == "__main__":
 	device = torch.device("cuda:0" if use_cuda==True else 'cpu')
 	n_splits = 10
 	
-	if len(sys.argv) > 1:
-		label = '_' + sys.argv[1]
-		print(label)
-	else:
-		label = ''
-
+	pre_load = str(sys.argv[1])
 	sys.path.insert(0, '../')
 
 	#process and load data
@@ -120,10 +115,11 @@ if __name__ == "__main__":
 	fold_model_list = [] #list of each models
 	for i in range(1, n_splits+1): 
 		#load model
-		if os.path.exists('output/fold_'+ str(i) +  label + '.pt'):
-			path_best_model = 'output/fold_'+ str(i) +  label + '.pt' #if re-trained or re-ran
+		if pre_load == 'True':
+			path_best_model = 'data/ensemble_models/fold_' + str(i) + '.pt' #if loading directly from the original model 
 		else:
-			path_best_model = 'data/ensemble_models/fold_'+ str(i) +  label + '.pt' #if loading directly from the original model 
+			path_best_model = 'output/fold_'+ str(i) + '.pt' #if re-trained or re-ran
+
 		model = torch.load(path_best_model, map_location = device)
 		#evaluate accuracy
 		acc = evaluate_accuracy(model, test_loader)
@@ -132,11 +128,11 @@ if __name__ == "__main__":
 
 	#create full ensemble, save
 	fold_ensemble = EnsembleClassifier(fold_model_list)
-	torch.save(fold_ensemble, 'output/ensemble' + label + '.pt')
+	torch.save(fold_ensemble, 'output/ensemble.pt')
 
 	#report accuracy
 	fold_logits = fold_ensemble(x_test)
-	fold_acc = softmax_predictive_accuracy(fold_logits, y_test,label)
+	fold_acc = softmax_predictive_accuracy(fold_logits, y_test)
 	fold_acc = np.float(fold_acc.cpu().numpy())
 	print('final accuracy=', fold_acc)
 

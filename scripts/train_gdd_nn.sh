@@ -3,10 +3,10 @@
 #BSUB -W 108:00
 #
 # Set output file
-#BSUB -o  fold.%I.out
+#BSUB -o  scripts/fold.%I.out
 #
 # Set error file
-#BSUB -eo fold.%I.stderr
+#BSUB -eo scripts/fold.%I.stderr
 #
 # Specify node group
 #BSUB -q gpuqueue
@@ -19,5 +19,5 @@
 #BSUB -J "train_gdd_nn[1-10]"
 source ~/.bashrc
 module load cuda/10.1
-conda activate vir-env
-python train_gdd_nn.py "$((${LSB_JOBINDEX}-1))"
+conda activate gdd_ens_env
+python scripts/train_gdd_nn.py "$((${LSB_JOBINDEX}-1))"

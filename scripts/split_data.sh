@@ -3,10 +3,10 @@
 #BSUB -W 72:00
 #
 # Set output file
-#BSUB -o  split_data.out
+#BSUB -o  scripts/split_data.out
 #
 # Set error file
-#BSUB -eo split_data.stderr
+#BSUB -eo scripts/split_data.stderr
 #
 # Specify node group
 #BSUB -q gpuqueue -n 1 -gpu "num=1:mps=yes"
@@ -19,6 +19,6 @@
 #BSUB -J "split_data"
 source ~/.bashrc
 module load cuda/10.1
-conda activate vir-env
-python split_data.py
+conda activate gdd_ens_env
+python scripts/split_data.py output/msk_solid_heme_ft.csv
 

@@ -3,10 +3,10 @@
 #BSUB -W 72:00
 #
 # Set output file
-#BSUB -o  multi_prior.out
+#BSUB -o  scripts/multi_prior.out
 #
 # Set error file
-#BSUB -eo multi_prior.stderr
+#BSUB -eo scripts/multi_prior.stderr
 #
 # Specify node group
 #BSUB -q gpuqueue -n 1 -gpu "num=1:mps=yes"
@@ -19,6 +19,6 @@
 #BSUB -J "multi_prior"
 source ~/.bashrc
 module load cuda/10.1
-conda activate vir-env
-python adaptable_prior.py 'prior_table_multi.csv' 'template_output_liver.csv' 'template_allprobs_liver.csv' multi
+conda activate gdd_ens_env
+python scripts/adaptable_prior.py data/prior_table_multi.csv output/single_ft_res.csv output/multi_adj_single_ft_res.csv 
 

@@ -75,14 +75,13 @@ class Iteration_Stop(EarlyStopper):
 		else:
 			return False
 			
-def process_data_folds(n_splits, label, fold): 
+def process_data_folds(n_splits, fold): 
 	''' 
-	#Same as process_data_bal in split script, but loads pre-saved versions of training and testing set given the label
+	#Same as process_data_bal in split script, but loads pre-saved versions of training and testing set 
 	requires path to new tables outputted by split_data_bal
 
 	input:
 		n_splits = integer, number of ensembles to create
-		label = string input from .sh file representing specific label provided for each run ('' = normal, 'bal' = balanced, can define more)
 	output:
 		x_train_folds, y_train_folds  = list of np.arrays representing each ensemble training set for feature tables (x_train_folds) and labels (y_train_folds)
 		x_val_folds, y_val_folds  = list of np.arrays representing each ensemble training set for feature tables (x_val_folds) and labels (y_val_folds)
@@ -90,10 +89,10 @@ def process_data_folds(n_splits, label, fold):
 		n_features = number of distinct features
 		n_types = number of distinct types
 	'''
-	data_train = pd.read_csv('output/ft_train'+label+'.csv', sep = ',', index_col = 0)
-	labels_train = pd.read_csv('output/labels_train'+label+'.csv', sep = ',', index_col = 0).squeeze('columns')
-	data_test = pd.read_csv('output/ft_test'+label+'.csv', sep = ',', index_col = 0)
-	labels_test = pd.read_csv('output/labels_test'+label+'.csv', sep = ',', index_col = 0).squeeze('columns')
+	data_train = pd.read_csv('output/ft_train.csv', sep = ',', index_col = 0)
+	labels_train = pd.read_csv('output/labels_train.csv', sep = ',', index_col = 0).squeeze('columns')
+	data_test = pd.read_csv('output/ft_test.csv', sep = ',', index_col = 0)
+	labels_test = pd.read_csv('output/labels_test.csv', sep = ',', index_col = 0).squeeze('columns')
 	n_features = len(data_test.columns)
 	n_types = len(set(labels_test))
 	print('n_features = ', n_features)
@@ -175,7 +174,7 @@ def fitness(learning_rate, weight_decay, dropout_rate, num_fc_layers, num_fc_uni
 	criterion = torch.nn.CrossEntropyLoss() #Log Loss function
 	optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
 	#train model
-	for epoch in range(2):
+	for epoch in range(200):
 		loss = 0 
 		model.train()
 		for i, (x,y) in enumerate(train_loader): 
@@ -209,24 +208,20 @@ if __name__ == "__main__":
 	#same labels, test_size, n_splits as in split_data
 	test_size = 20
 	n_splits = 10
-	if len(sys.argv) > 3:
-		label = '_' + sys.argv[1]
-	else:
-		label =''
 	#load data
 	fold = int(sys.argv[-1]) #if submitted as a job array, defined from the .sh file, index which grabs the correct ensemble fold
-	x_train, y_train, x_val, y_val, x_test, y_test, n_features, n_types = process_data_folds(n_splits, label, fold)
+	x_train, y_train, x_val, y_val, x_test, y_test, n_features, n_types = process_data_folds(n_splits, fold)
 	print('Done Data Processing')
 	#create train, val, test loaders
 	train_loader = create_loader(x_train, y_train)
 	val_loader = create_loader(x_val, y_val)
 	test_loader = create_loader(x_test, y_test)
-	path_best_model = 'output/fold_' + str(fold+1) + label + '.pt' #saves the best found model at this path
-	path_best_params = 'output/fold_' + str(fold+1) + label + '_params.csv' #saves the best found params
+	path_best_model = 'output/fold_' + str(fold+1) + '.pt' #saves the best found model at this path
+	path_best_params = 'output/fold_' + str(fold+1) + '_params.csv' #saves the best found params
 	best_accuracy = 0.0 
 	n_it = 0
 	#gp_minimize finds the minimum of the fitness function by approximating it with a gaussian process, acquisition function over a gaussian prior chooses next param to evaluate
-	search_result = gp_minimize(func=fitness, dimensions=dimensions, acq_func='gp_hedge', n_calls=11, x0=default_paramaters, random_state=0, n_jobs = -1, callback = Iteration_Stop(max_upd = 1)) 
+	search_result = gp_minimize(func=fitness, dimensions=dimensions, acq_func='gp_hedge', n_calls=300, x0=default_paramaters, random_state=0, n_jobs = -1, callback = Iteration_Stop(max_upd = 5)) 
 	#print accuracy of best result
 	best_model = torch.load(path_best_model)
 	test_micro = evaluate_accuracy_micro(best_model, test_loader)
