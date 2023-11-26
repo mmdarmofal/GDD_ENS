@@ -7,7 +7,7 @@ git lfs install
 git clone https://github.com/mmdarmofal/GDD_ENS.git
 ```
 
-### Create a Conda Environment using the [requirements](../env/gdd_ens_env.yml) tml file:
+### Create a Conda Environment using the [requirements](../env/gdd_ens_env.yml) yml file:
 ```
 conda env create gdd_ens_env -f env/gdd_ens_env.yml
 ```
