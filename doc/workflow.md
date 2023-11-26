@@ -1,13 +1,21 @@
 ## Initial Set-up:
 
-### Create a Conda Environment using the [requirements](../env/requirements.txt) file:
+### Download and install [git-lfs](https://git-lfs.com/) for accessing large files:
 ```
-conda env create gdd_ens -f env/requirements.txt
+conda install -c conda-forge git-lfs 
+git lfs install 
+git clone https://github.com/mmdarmofal/GDD_ENS.git
 ```
 
-### Unzip the Repository Folder:
+### Create a Conda Environment using the [requirements](../env/requirements.txt) file:
+```
+conda env create gdd_ens_env -f env/gdd_ens_env.yml
+```
+
+### Unzip the Repository Folder and Individual Models:
 ```
 unzip data/msk_solid_heme.zip
+unzip data/ensemble_models.zip
 ```
 
 ### Download & Index the Reference Fasta
@@ -27,15 +35,14 @@ bwa index hg19.fa
 
    > Inputs: 
    > * path_to_fasta: path to fasta, ex: hg19.fa
-   > * label: title of the final output table (if not specified, msk_solid_heme_ft.csv)
-   >
+   > * path_to_ft: path to output feature table, ex: output/msk_solid_heme_ft.csv
 
    ```
-   $ python scripts/generate_feature_table.py <path/to/fasta> <label>
+   $ python scripts/generate_feature_table.py <path/to/fasta> <path/to/ft>
   ```
 
    > Outputs:
-   > * msk_solid_heme_ft.csv: final data table
+   > * final data table with specified filename as per path_to_ft
    >
 
 ## Train and Test GDD-ENS Model:
@@ -43,11 +50,11 @@ bwa index hg19.fa
 ### 1. Split data into training and testing
 
    > Inputs: 
-   > * label: string specifying if you want to change any of the default file names for the final tables
-   >
+   > * path_to_ft: path to output feature table, ex: output/msk_solid_heme_ft.csv
+
 
    ```
-   $ python scripts/split_data.py <label>
+   $ python scripts/split_data.py <path/to/ft>
    ```
 
    > Outputs: 
@@ -61,12 +68,11 @@ bwa index hg19.fa
 ### 2. Train 10 individual models for classification
 
    > Inputs: 
-   > * label: string specifying if you want to change any of the default file names for the final tables/models
    > * fold: which fold of the ensemble model is training / which splits of training and testing to grab (an integer 1-10, this is usually submitted as a bash job array so all 10 submit to HPC and are ran at the same time)
    >
 
    ```
-   $ python scripts/train_gdd_nn.py <fold> <label>
+   $ python scripts/train_gdd_nn.py <fold> 
    ```
 
    > Outputs: 
@@ -76,11 +82,11 @@ bwa index hg19.fa
 
 ### 3. Combine 10 models into single ensemble model (GDD-ENS)
    > Inputs: 
-   > * label: string specifying if you want to change any of the default file names for the final tables/models
+   > * pre_load: string indicating where to load and save models: "True" if loading directly from the original model (stored in data/ensemble_models), "False" if re-trained or re-ran (stored in output)
    >
 
    ```
-   $ python scripts/gdd_ensemble.py <label>
+   $ python scripts/gdd_ensemble.py
    ```
    > Outputs: 
    > * ensemble.pt: final ensemble model
@@ -91,12 +97,12 @@ bwa index hg19.fa
 ## Single GDD-ENS runs:
    > Inputs:
    > * model: filepath to GDD model
-   > * predict_single_fn: filepath to datatable for sample which is being run through GDD (required column = 'SAMPLE_ID')
+   > * input_table_fn: filepath to datatable for sample which is being run through GDD (required column = 'SAMPLE_ID')
    > * final_res_fn: filepath to save result after running sample through GDD
    >
 
    ```
-   $ python scripts/run_gdd_single.py <path/to/model> <path/to/predict_single_fn> <path/to/final_res_fn>
+   $ python scripts/run_gdd_single.py <path/to/model> <path/to/input_table_fn> <path/to/final_res_fn>
    ```
 
    > Outputs: 
@@ -109,11 +115,11 @@ bwa index hg19.fa
    > Inputs: 
    > * prior_file: specified prior, ex: prior_table_single.csv, prior_table_multi.csv
    > * original_output_file: outputted results by GDD-ENS for single sample, ex: single_ft_res.csv
-   >
+   > * new_output_file: filename for results after adjusting for the prior
 
    ```
    $ python scripts/adaptable_prior.py <path/to/adaptable_prior_file> <path/to/original_output> <label>
    ```
 
    > Outputs: 
-   > * output_post_prior.csv: new results after adjusting for specified prior(s)
+   > * new_output_file: results after adjusting for one or more priors
