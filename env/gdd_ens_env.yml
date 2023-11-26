@@ -1,0 +1,17 @@
+name: gdd_ens_env
+channels:
+  - defaults
+  - bioconda
+  - conda-forge
+dependencies:
+  - imbalanced-learn
+  - joblib
+  - numpy
+  - openpyxl
+  - pandas=1.3
+  - pyfaidx
+  - python=3.7
+  - pytorch
+  - scikit-learn
+  - scikit-optimize
+  - shap
