@@ -72,6 +72,8 @@ if __name__ == '__main__':
 	n_splits = 10
 	upsample = 350
 	path_to_ft = sys.argv[-1]
+	if len(sys.argv) < 2:
+		raise Exception("Not enough arguments")
 
 	sys.path.insert(0, '../')
 

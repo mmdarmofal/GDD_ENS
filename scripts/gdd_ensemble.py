@@ -99,7 +99,9 @@ if __name__ == "__main__":
 	print('cuda = ', use_cuda)
 	device = torch.device("cuda:0" if use_cuda==True else 'cpu')
 	n_splits = 10
-	
+	if len(sys.argv) < 2:
+		raise Exception("Not enough arguments")
+
 	pre_load = str(sys.argv[1])
 	sys.path.insert(0, '../')
 

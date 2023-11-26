@@ -209,6 +209,9 @@ if __name__ == "__main__":
 	test_size = 20
 	n_splits = 10
 	#load data
+	if len(sys.argv) < 2:
+		raise Exception("Not enough arguments")
+
 	fold = int(sys.argv[-1]) #if submitted as a job array, defined from the .sh file, index which grabs the correct ensemble fold
 	x_train, y_train, x_val, y_val, x_test, y_test, n_features, n_types = process_data_folds(n_splits, fold)
 	print('Done Data Processing')

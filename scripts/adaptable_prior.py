@@ -66,6 +66,9 @@ def prior_adjust(prior_dic_list, output, allprobs, type_labels, new_output_file)
 
 if __name__ == "__main__":
     #load datasets 
+    if len(sys.argv) < 4:
+        raise Exception("Not enough arguments")
+
     prior_file, output_file, new_output_file = sys.argv[1], sys.argv[2], sys.argv[3]
     sys.path.insert(0, '../')
 

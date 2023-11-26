@@ -291,10 +291,6 @@ def signatures(sigs):
 	sig_data = pd.crosstab(index=sigsm['SAMPLE_ID'], columns=sigsm['sig_name']).reset_index()
 	return sig_data
 
-#parse args 
-#format : python generate_ft_table.py path/to/fasta path/to/ft
-#both fasta and output ft filename are required
-
 if len(sys.argv) < 3:
 	raise Exception("Not enough arguments")
 
