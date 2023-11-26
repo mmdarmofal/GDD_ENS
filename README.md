@@ -54,9 +54,10 @@ Tumor type classifier using cancer genomic panel sequencing data
 
 ## Quick Links and Tips:
 * [Full Example Workflow](doc/workflow.md)
+* Files are large and require git-lfs for storage and download. Instructions for git-lfs use is in the workflow - for any file-based data unloading errors we recommend re-downloading the models/files directly from the GDD-ENS github repo
 * If running GDD-ENS locally, execute all scripts from the GDD_ENS main folder
 * If re-training GDD-ENS or training a modified GDD-ENS we recommend using HPC if available and submitting jobs through the bash scripts provided in the [scripts folder](./scripts)
-* Files are large and require git-lfs for storage and download. Instructions for git-lfs use is in the workflow - for any file-based data unloading errors we recommend re-downloading the models/files directly from the GDD-ENS github repo
+* If running GDD-ENS on single samples: only required column is 'SAMPLE_ID', any feature table columns that are not present in the test sample will be assumed absent (= 0) in the final prediction
 
 ## Credits:
 GDD_ENS was originally written by Madison Darmofal <darmofam@mskcc.org>.
