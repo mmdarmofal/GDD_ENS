@@ -6,6 +6,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 * [bwa](https://bio-bwa.sourceforge.net/)
 * Conda
 * python3
+* [git-lfs](https://git-lfs.com/)
 * numpy
 * pandas
 * [PyTorch](https://pytorch.org/)
@@ -55,7 +56,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 * [Full Example Workflow](doc/workflow.md)
 * If running GDD-ENS locally, execute all scripts from the GDD_ENS main folder
 * If re-training GDD-ENS or training a modified GDD-ENS we recommend using HPC if available and submitting jobs through the bash scripts provided in the [scripts folder](./scripts)
-* For any file-based data unloading errors we recommend re-downloading the models/files directly from the GDD-ENS github repo
+* Files are large and require git-lfs for storage and download. Instructions for git-lfs use is in the workflow - for any file-based data unloading errors we recommend re-downloading the models/files directly from the GDD-ENS github repo
 
 ## Credits:
 GDD_ENS was originally written by Madison Darmofal <darmofam@mskcc.org>.
