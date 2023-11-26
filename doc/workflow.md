@@ -123,4 +123,4 @@ bwa index hg19.fa
 
    > Outputs: 
    > * new_output_file: results after adjusting for one or more priors new_pred and new_prob correspond to the new top prediction and confidence
-   > * new_output_rescale_array: full final output including resulting confidence values across all cancer types
+   > * new_output_rescale_array: full final output array across all cancer types following adjustment
