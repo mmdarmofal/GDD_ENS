@@ -6,7 +6,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 * [bwa](https://bio-bwa.sourceforge.net/)
 * Conda
 * python3
-* git-lfs
+* [git-lfs] (https://git-lfs.com/)
 * numpy
 * pandas
 * [PyTorch](https://pytorch.org/)
