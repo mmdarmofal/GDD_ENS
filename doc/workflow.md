@@ -68,7 +68,7 @@ bwa index hg19.fa
 ### 2. Train 10 individual models for classification
 
    > Inputs: 
-   > * fold: which fold of the ensemble model is training / which splits of training and testing to grab (an integer 1-10, this is usually submitted as a bash job array so all 10 submit to HPC and are ran at the same time)
+   > * fold: which fold of the ensemble model is training / which splits of training and testing to grab (an integer 1-10, this is usually submitted as a bash job array so all 10 submit to HPC and are ran at the same time, otherwise needs to be run ten separate times for generation of the ten independent models)
    >
 
    ```
