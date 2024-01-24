@@ -62,7 +62,7 @@
     ```
 #### Compare outputs of both models
 9. Run comparison script
-- if using re-trained outputs separate from the preloaded models need to change the associated filepaths within thes script
+- if using re-trained outputs separate from the preloaded results need to change the associated filepaths within thes script
 -   **output** = final_comp_res.csv, comparison datatable summarizing results from preloaded_results folder
     ```{linux test_rf}
     python modified_scripts/compare_models.py
