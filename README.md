@@ -58,6 +58,7 @@ Tumor type classifier using cancer genomic panel sequencing data
 * If running GDD-ENS locally, execute all scripts from the GDD_ENS main folder
 * If re-training GDD-ENS or training a modified GDD-ENS we recommend using HPC if available and submitting jobs through the bash scripts provided in the [scripts folder](./scripts)
 * If running GDD-ENS on single samples: only required column is 'SAMPLE_ID', any feature table columns that are not present in the test sample will be assumed absent (= 0) in the final prediction
+* compare_RF folder contains instructions for training ensemble on GDD-RF dataset, and re-training RF model on GDD-ENS dataset - full documentation in the associated [README](./compare_RF/README.md)
 
 ## Credits:
 GDD_ENS was originally written by Madison Darmofal <darmofam@mskcc.org>.
