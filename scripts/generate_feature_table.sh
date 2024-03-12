@@ -20,5 +20,5 @@
 source ~/.bashrc
 module load cuda/10.1
 conda activate gdd_ens_env
-python scripts/generate_feature_table.py /data/morrisq/darmofam/gr37.fasta /output/msk_solid_heme_ft.csv
+python scripts/generate_feature_table.py /data/morrisq/darmofam/gr37.fasta /data/msk_solid_heme /output/msk_solid_heme_ft.csv
 
