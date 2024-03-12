@@ -15,6 +15,7 @@ conda env create gdd_ens_env -f env/gdd_ens_env.yml
 ### Unzip the Feature Table and Individual Models:
 ```
 unzip data/msk_solid_heme_ft.zip
+unzip data/msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt.zip
 unzip data/ensemble_models.zip
 ```
 
