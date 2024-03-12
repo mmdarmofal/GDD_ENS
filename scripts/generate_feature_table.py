@@ -321,7 +321,7 @@ sigs = pd.read_table('data/msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt
 sigs = sigs.rename({'Tumor_Sample_Barcode':'SAMPLE_ID'}, axis = 1)
 
 #CN Data
-seg = pd.read_table(path_to_data + '/mskimpact_data_cna_hg19.seg')
+seg = pd.read_table(path_to_data + '/data_cna_hg19.seg')
 seg = seg.assign(seg_absmean=abs(seg['seg.mean']))
 seg = seg.rename({'ID':'SAMPLE_ID'}, axis = 1)
 cn = pd.read_table(path_to_data + '/data_CNA.txt')
