@@ -17,7 +17,7 @@
   - data_clinical_patient.txt
   - data_fusions.txt
   - data_mutations_extended.txt
-  - mskimpact_data_cna_hg19.seg
+  - data_cna_hg19.seg
 
 ## [data_model](../data/data_model)
 * ensemble.pt
