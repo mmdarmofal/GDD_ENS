@@ -14,11 +14,11 @@ conda env create gdd_ens_env -f env/gdd_ens_env.yml
 
 ### Unzip the Repository Folder and Individual Models:
 ```
-unzip data/msk_solid_heme.zip
+unzip data/msk_solid_heme_ft.zip
 unzip data/ensemble_models.zip
 ```
 
-### Download & Index the Reference Fasta
+### Download & Index the Reference Fasta (if re-generating feature table)
 ```
 # Download from the UCSC Database:
 wget https://hgdownload.cse.ucsc.edu/goldenpath/hg19/bigZips/hg19.fa.gz
@@ -35,10 +35,11 @@ bwa index hg19.fa
 
    > Inputs: 
    > * path_to_fasta: path to fasta, ex: hg19.fa
+   > * path_to_data: path to input data from AACR Genie or similar, ex: data/genie
    > * path_to_ft: path to output feature table, ex: output/msk_solid_heme_ft.csv
 
    ```
-   $ python scripts/generate_feature_table.py <path/to/fasta> <path/to/ft>
+   $ python scripts/generate_feature_table.py <path/to/fasta> <path/to/data> <path/to/ft>
   ```
 
    > Outputs:
