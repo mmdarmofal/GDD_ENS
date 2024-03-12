@@ -12,7 +12,7 @@ git clone https://github.com/mmdarmofal/GDD_ENS.git
 conda env create gdd_ens_env -f env/gdd_ens_env.yml
 ```
 
-### Unzip the Repository Folder and Individual Models:
+### Unzip the Feature Table and Individual Models:
 ```
 unzip data/msk_solid_heme_ft.zip
 unzip data/ensemble_models.zip
