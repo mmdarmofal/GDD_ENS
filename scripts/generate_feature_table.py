@@ -291,20 +291,22 @@ def signatures(sigs):
 	sig_data = pd.crosstab(index=sigsm['SAMPLE_ID'], columns=sigsm['sig_name']).reset_index()
 	return sig_data
 
-if len(sys.argv) < 3:
+if len(sys.argv) < 4:
 	raise Exception("Not enough arguments")
 
 path_to_fasta = str(sys.argv[1])
-path_to_ft = str(sys.argv[2])
+path_to_data = str(sys.argv[2])
+path_to_ft = str(sys.argv[3])
 
 print('Specified Fasta:', path_to_fasta)
+print('Data Folder:', path_to_data)
 print('Output Table:', path_to_ft)
 
 #set file path
 impact = True
 #load clinical data
-data_clinical_sample = pd.read_table('data/msk_solid_heme/data_clinical_sample.txt', skiprows = 4)
-data_clinical_patient = pd.read_table('data/msk_solid_heme/data_clinical_patient.txt', skiprows = 4)
+data_clinical_sample = pd.read_table(path_to_data + '/data_clinical_sample.txt', skiprows = 4)
+data_clinical_patient = pd.read_table(path_to_data + '/data_clinical_patient.txt', skiprows = 4)
 data_clinical_sample = pd.merge(data_clinical_sample, data_clinical_patient)
 data_clinical_sample = data_clinical_sample[data_clinical_sample.SAMPLE_ID.str.contains('IM')] #only looking at MSK-IMPACT patients
 
@@ -315,21 +317,21 @@ feature_table.Cancer_Type = feature_table.Cancer_Type.fillna('other')
 feature_table = feature_table.assign(Classification_Category = ['train' if ct != 'other' else 'other' for ct in feature_table.Cancer_Type])
 
 #Signatures
-sigs = pd.read_table('data/msk_solid_heme/msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt')
+sigs = pd.read_table('data/msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt')
 sigs = sigs.rename({'Tumor_Sample_Barcode':'SAMPLE_ID'}, axis = 1)
 
 #CN Data
-seg = pd.read_table('data/msk_solid_heme/mskimpact_data_cna_hg19.seg')
+seg = pd.read_table(path_to_data + '/mskimpact_data_cna_hg19.seg')
 seg = seg.assign(seg_absmean=abs(seg['seg.mean']))
 seg = seg.rename({'ID':'SAMPLE_ID'}, axis = 1)
-cn = pd.read_table('data/msk_solid_heme/data_CNA.txt')
+cn = pd.read_table(path_to_data + '/data_CNA.txt')
 
 #Fusions
-SV = pd.read_table('data/msk_solid_heme/data_fusions.txt')
+SV = pd.read_table(path_to_data + '/data_fusions.txt')
 SV = SV.rename({'Tumor_Sample_Barcode':'SAMPLE_ID', 'Sample_ID':'SAMPLE_ID','Site2_Contig':'Hugo_Symbol'}, axis = 1)
 
 #Mutations 
-maf = pd.read_table('data/msk_solid_heme/data_mutations_extended.txt', skiprows = 1)
+maf = pd.read_table(path_to_data + '/data_mutations_extended.txt', skiprows = 1)
 maf = maf.rename({'Tumor_Sample_Barcode':'SAMPLE_ID'}, axis =1)
 maf = maf.sort_values(by = 'SAMPLE_ID')
 maf_all_somatic = maf[maf.Mutation_Status=='SOMATIC'] #calculate purity estimates, TMB from all detected somatic mutations, not just impact-341 
