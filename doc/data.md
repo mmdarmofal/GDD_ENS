@@ -8,14 +8,15 @@
 * gddnn_kmeans_output.bz2
 * tumor_type_final.txt
 * tumor_type_ordered.csv
+* msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt
 
-## [msk_solid_heme](../data/data_training/msk_solid_heme.zip)
+
+## data feature table generation (AACR GENIE) 
   - data_CNA.txt
   - data_clinical_sample.txt
   - data_clinical_patient.txt
   - data_fusions.txt
   - data_mutations_extended.txt
-  - msk_solid_heme_data_mutations_unfiltered.sigs.tab.txt
   - mskimpact_data_cna_hg19.seg
 
 ## [data_model](../data/data_model)
